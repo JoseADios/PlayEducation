@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->date('fecha_nacimiento')->nullable();
             $table->string('ruta_imagen')->nullable();
-            $table->boolean('estado')->default(true);
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }
