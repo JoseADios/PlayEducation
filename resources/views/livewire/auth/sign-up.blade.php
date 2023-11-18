@@ -96,6 +96,13 @@
                                   @error('name') <div class="text-danger">{{ $message }}</div> @enderror
                               </div>
                               <div class="mb-3">
+                                  <div class="@error('last_name') border border-danger rounded-3  @enderror">
+                                      <input wire:model="last_name" type="text" class="form-control" placeholder="Last Name"
+                                          aria-label="Last Name" aria-describedby="lastName-addon">
+                                  </div>
+                                  @error('last_name') <div class="text-danger">{{ $message }}</div> @enderror
+                              </div>
+                              <div class="mb-3">
                                   <div class="@error('email') border border-danger rounded-3 @enderror">
                                       <input wire:model="email" type="email" class="form-control" placeholder="Email"
                                           aria-label="Email" aria-describedby="email-addon">
