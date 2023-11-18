@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Docente;
+use App\Models\Puntuacion;
 use Illuminate\Http\Request;
 
-class DocenteController extends Controller
+class PuntuacionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class DocenteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Docente $docente)
+    public function show(Puntuacion $puntuacion)
     {
         //
     }
@@ -42,7 +42,7 @@ class DocenteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Docente $docente)
+    public function edit(Puntuacion $puntuacion)
     {
         //
     }
@@ -50,7 +50,7 @@ class DocenteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Docente $docente)
+    public function update(Request $request, Puntuacion $puntuacion)
     {
         //
     }
@@ -58,7 +58,7 @@ class DocenteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Docente $docente)
+    public function destroy(Puntuacion $puntuacion)
     {
         //
     }

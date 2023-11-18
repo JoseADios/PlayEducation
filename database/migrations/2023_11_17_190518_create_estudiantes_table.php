@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('apellido');
             $table->string('usuario')->unique();
             $table->boolean('activo')->default(true);
+            $table->unique(['nombre', 'apellido']);
             $table->timestamps();
         });
     }

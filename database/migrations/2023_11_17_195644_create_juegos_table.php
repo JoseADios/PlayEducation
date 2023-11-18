@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('tipo_juego_id');
             $table->foreign('tipo_juego_id')->references('id')->on('tipo_juegos')->onDelete('cascade');
             $table->string('nombre')->unique();
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();
             $table->timestamps();
         });
     }
