@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('grupos', function (Blueprint $table) {
+        Schema::create('logros', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('curso_id');
-            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
-            $table->string('nombre')->unique();
+            $table->integer('puntuacion_minima');
+            $table->string('titulo')->unique();
+            $table->string('descripcion')->nullable();
+            $table->string('ruta_imagen')->nullable();
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('grupos');
+        Schema::dropIfExists('logros');
     }
 };

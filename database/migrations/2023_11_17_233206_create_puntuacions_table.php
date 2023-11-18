@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('puntuacions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('estudiante_id')->index();
+            $table->unsignedBigInteger('estudiante_id');
             $table->foreign('estudiante_id')->references('id')->on('estudiantes')->restrictOnDelete();
-            $table->unsignedBigInteger('juego_id')->index();
+            $table->unsignedBigInteger('juego_id');
             $table->foreign('juego_id')->references('id')->on('juegos')->restrictOnDelete();
             $table->integer('puntuacion');
             $table->integer('dificultad')->default(1);
