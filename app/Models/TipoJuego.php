@@ -12,5 +12,7 @@ class TipoJuego extends Model
     public function juegos()
     {
         return $this->hasMany(Juego::class);
+
     }
+
 }

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class CentroEducativo extends Model
 {
     use HasFactory;
+
+    public function grupos()
+    {
+        return $this->hasMany(Grupo::class);
+    }
 }

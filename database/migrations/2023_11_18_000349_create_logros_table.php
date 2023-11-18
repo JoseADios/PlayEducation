@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('logros', function (Blueprint $table) {
             $table->id();
             $table->integer('puntuacion_minima');
+            $table->id('juego_id')->constrained('juegos');
             $table->string('titulo')->unique();
             $table->string('descripcion')->nullable();
             $table->string('ruta_imagen')->nullable();
