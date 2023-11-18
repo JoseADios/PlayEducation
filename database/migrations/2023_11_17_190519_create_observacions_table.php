@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('observacions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('docente_id');
-            $table->foreign('docente_id')->references('id')->on('docentes')->onDelete('cascade');
+            $table->foreign('docente_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('estudiante_id');
             $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
             $table->string('titulo');
