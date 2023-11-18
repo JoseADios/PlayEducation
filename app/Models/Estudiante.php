@@ -24,6 +24,9 @@ class Estudiante extends Model
         return $this->hasMany(Puntuacion::class);
     }
 
-    // TODO: Add relationship with EstudiantesLogro
+    public function logros()
+    {
+        return $this->belongsToMany(Logro::class, 'estudiantes_logros');
+    }
 
 }
