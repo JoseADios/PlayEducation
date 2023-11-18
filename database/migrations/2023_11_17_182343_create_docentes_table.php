@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('docentes', function (Blueprint $table) {
             $table->id();
-            $table->string('password_temp')->default();
+            $table->string('password_temp');
             $table->string('nombre');
             $table->string('apellido');
             $table->string('correo')->unique();

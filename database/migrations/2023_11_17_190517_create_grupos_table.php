@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('grupos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('curso_id');
+            $table->unsignedBigInteger('curso_id')->index();
             $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
-            $table->string('nombre');
+            $table->string('nombre')->unique();
             $table->timestamps();
         });
     }
