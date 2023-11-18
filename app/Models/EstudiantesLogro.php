@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class EstudiantesLogro extends Model
 {
     use HasFactory;
+
+    // TODO: agregar relacion con estudiantes y logros
 }
