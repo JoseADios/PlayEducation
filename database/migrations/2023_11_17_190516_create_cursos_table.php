@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('docente_id');
-            $table->foreign('docente_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('centro_educativo_id');
             $table->foreign('centro_educativo_id')->references('id')->on('centro_educativos')->onDelete('cascade');
             $table->string('nombre')->unique();

@@ -19,8 +19,4 @@ class Curso extends Model
         return $this->belongsTo(CentroEducativo::class);
     }
 
-    public function users()
-    {
-        return $this->belongsTo(User::class);
-    }
 }
