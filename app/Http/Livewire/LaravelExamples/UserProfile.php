@@ -11,16 +11,18 @@ class UserProfile extends Component
     public $showSuccesNotification  = false;
 
     public $showDemoNotification = false;
-    
+
     protected $rules = [
         'user.name' => 'max:40|min:3',
+        'user.last_name' => 'max:40|min:3',
+        'user.birth_date' => 'date',
         'user.email' => 'email:rfc,dns',
         'user.phone' => 'max:10',
         'user.about' => 'max:200',
-        'user.location' => 'min:3'
+        'user.location' => 'max:255'
     ];
 
-    public function mount() { 
+    public function mount() {
         $this->user = auth()->user();
     }
 

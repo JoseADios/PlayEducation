@@ -19,10 +19,10 @@
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
-                            {{ __('Alec Thompson') }}
+                            {{ auth()->user()->name }} {{ auth()->user()->last_name }}
                         </h5>
                         <p class="mb-0 font-weight-bold text-sm">
-                            {{ __(' CEO / Co-Founder') }}
+                            {{ __(' Teacher') }}
                         </p>
                     </div>
                 </div>
@@ -155,7 +155,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="user-name" class="form-control-label">{{ __('Full Name') }}</label>
+                                <label for="user-name" class="form-control-label">{{ __('Name') }}</label>
                                 <div class="@error('user.name')border border-danger rounded-3 @enderror">
                                     <input wire:model="user.name" class="form-control" type="text" placeholder="Name"
                                         id="user-name">
@@ -171,6 +171,27 @@
                                         placeholder="@example.com" id="user-email">
                                 </div>
                                 @error('user.email') <div class="text-danger">{{ $message }}</div> @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="last-name" class="form-control-label">{{ __('Last Name') }}</label>
+                                <div class="@error('user.last_name')border border-danger rounded-3 @enderror">
+                                    <input wire:model="user.last_name" class="form-control" type="text" placeholder="Last Name"
+                                        id="user-last-name">
+                                </div>
+                                @error('user.last_name') <div class="text-danger">{{ $message }}</div> @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="user-birth-date" class="form-control-label">{{ __('Birth Date') }}</label>
+                                <div class="@error('user.birth_date')border border-danger rounded-3 @enderror">
+                                    <input wire:model="user.birth_date" class="form-control" type="date" id="user-birth-date">
+                                </div>
+                                @error('user.birth_date') <div class="text-danger">{{ $message }}</div> @enderror
                             </div>
                         </div>
                     </div>

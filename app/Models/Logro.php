@@ -13,4 +13,9 @@ class Logro extends Model
     {
         return $this->belongsTo(Juego::class);
     }
+
+    public function estudiantes()
+    {
+        return $this->belongsToMany(Estudiante::class, 'estudiantes_logros');
+    }
 }

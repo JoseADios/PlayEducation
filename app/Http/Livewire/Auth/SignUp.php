@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Hash;
 class SignUp extends Component
 {
     public $name = '';
+    public $last_name = '';
     public $email = '';
     public $password = '';
 
     protected $rules = [
         'name' => 'required|min:3',
+        'last_name' => 'required|string|min:3',
         'email' => 'required|email:rfc,dns|unique:users',
         'password' => 'required|min:6'
     ];
@@ -28,6 +30,7 @@ class SignUp extends Component
         $this->validate();
         $user = User::create([
             'name' => $this->name,
+            'last_name' => $this->last_name,
             'email' => $this->email,
             'password' => Hash::make($this->password)
         ]);
