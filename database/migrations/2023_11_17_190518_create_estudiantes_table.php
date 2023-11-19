@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('grupo_id');
             $table->foreign('grupo_id')->references('id')->on('grupos')->onDelete('cascade');
+            $table->int('id_registro');
             $table->string('nombre');
             $table->string('apellido');
             $table->string('usuario')->unique();
