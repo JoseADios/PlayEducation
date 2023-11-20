@@ -43,7 +43,7 @@ class User extends Authenticatable
 
     public function grupos()
     {
-        return $this->hasMany(Grupo::class);
+        return $this->hasMany(Grupo::class, 'docente_id');
     }
 
     public function observaciones()
