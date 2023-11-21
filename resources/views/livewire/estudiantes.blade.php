@@ -1,4 +1,24 @@
 <div class="main-content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4 mx-4 pb-4">
+                <div class="card-header pb-0">
+                    <div class="d-flex flex-row justify-content-between">
+                        <div>
+                            <h5 class="mb-0">Todos los estudiantes</h5>
+                        </div>
+                        <button wire:click="crearEstudiante()" class="btn bg-gradient-primary btn-sm mb-0"
+                            type="button">+&nbsp; New
+                            Student</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if ($modal)
+        @include('livewire.crearEstudiante')
+    @endif
 
     @foreach ($grupos as $grupo)
         <div class="row">
@@ -9,8 +29,6 @@
                             <div>
                                 <h5 class="mb-0">{{ $grupo->nombre }}</h5>
                             </div>
-                            <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; New
-                                Student</a>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
