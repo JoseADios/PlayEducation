@@ -1,4 +1,8 @@
-<div class="row position-fixed" style="z-index: 99">
+<div class="position-fixed modal-dialog modal-dialog-centered modal-dialog-scrollable" style="z-index: 99">
+    ... gdfsgsdf
+</div>
+
+{{-- <div class="row position-fixed" style="z-index: 99">
     <div class="position-fixed z-10 inset-0 overflow-y-auto ease-out duration-400 card mb-4 mx-1">
 
         <div class="flex justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -58,4 +62,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
