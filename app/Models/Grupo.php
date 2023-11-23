@@ -9,13 +9,16 @@ class Grupo extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['nombre',];
+
+
     public function estudiantes()
     {
         return $this->hasMany(Estudiante::class);
     }
 
-    public function cursos()
+    public function users()
     {
-        return $this->belongsTo(Curso::class);
+        return $this->belongsTo(Curso::class,'docente_id');
     }
 }
