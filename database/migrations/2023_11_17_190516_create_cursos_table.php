@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('grupos', function (Blueprint $table) {
+        Schema::create('cursos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('docente_id');
-            $table->foreign('docente_id')->references('id')->on('users')->restrictOnDelete();//->onDelete('cascade');
+            $table->unsignedBigInteger('centro_educativo_id');
+            $table->foreign('centro_educativo_id')->references('id')->on('centro_educativos')->onDelete('cascade');
             $table->string('nombre')->unique();
-            $table->string('descripcion')->nullable();
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('grupos');
+        Schema::dropIfExists('cursos');
     }
 };

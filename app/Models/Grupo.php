@@ -21,4 +21,9 @@ class Grupo extends Model
     {
         return $this->belongsTo(Curso::class,'docente_id');
     }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
