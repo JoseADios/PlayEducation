@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Estudiante;
 use Livewire\Component;
 
 class Estudiantes extends Component
@@ -25,28 +26,49 @@ class Estudiantes extends Component
         return view('livewire.estudiantes');
     }
 
-    public function crearEstudiante()
+    public function crearEst()
     {
-        $this->limpiarCampos();
-        $this->abrirModal();
+        $this->clearMdlCrearEst();
+        $this->abrirMdlCrearEst();
+        $this->emit('eVcrearEst');
     }
 
-    public function abrirModal()
+    public function abrirMdlCrearEst()
     {
         $this->modal = true;
     }
 
-    public function cerrarModal()
+    public function cerrarMdlCrearEst()
     {
         $this->modal = false;
     }
 
-    public function limpiarCampos()
+    public function clearMdlCrearEst()
     {
         $this->grupo_id = '';
         $this->nombre = '';
         $this->apellido = '';
         $this->usuario = '';
+    }
+
+    public function guardarEst()
+    {
+        $this->cerrarMdlCrearEst();
+    }
+
+    public function editarEst($id)
+    {
+        $estudiante = Estudiante::findOrFail($id);
+        $this->grupo_id = $estudiante->grupo_id;
+        $this->nombre = $estudiante->nombre;
+        $this->apellido = $estudiante->apellido;
+        $this->usuario = $estudiante->usuario;
+        $this->abrirMdlCrearEst();
+    }
+
+    public function eliminarEst($id)
+    {
+        Estudiante::find($id)->delete();
     }
 
 }

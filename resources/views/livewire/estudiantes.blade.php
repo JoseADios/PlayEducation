@@ -1,4 +1,11 @@
-<div class="main-content" style="overflow-x: hidden">
+<div class="d-flex flex-column" style="overflow-x: hidden">
+    <div class="row">
+        <div class="col-12">
+            @if ($modal)
+                @include('livewire.crearEstudiante')
+            @endif
+        </div>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card mb-4 mx-4 pb-4">
@@ -7,18 +14,14 @@
                         <div>
                             <h5 class="mb-0">Todos los estudiantes</h5>
                         </div>
-                        <button wire:click="crearEstudiante()" class="btn bg-gradient-primary btn-sm mb-0"
-                            type="button">+&nbsp; New
+                        <button wire:click="crearEst()" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp;
+                            New
                             Student</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    @if ($modal)
-        @include('livewire.crearEstudiante')
-    @endif
 
     @foreach ($grupos as $grupo)
         <div class="row">
@@ -81,11 +84,11 @@
                                                     class="text-secondary text-xs font-weight-bold">{{ $estudiante->created_at }}</span>
                                             </td>
                                             <td class="text-center">
-                                                <a href="#" class="mx-3" data-bs-toggle="tooltip"
+                                                <a wire:click="editarEst({{$estudiante->id}})" class="mx-3" data-bs-toggle="tooltip"
                                                     data-bs-original-title="Edit user">
                                                     <i class="fas fa-user-edit text-secondary"></i>
                                                 </a>
-                                                <span>
+                                                <span wire:click="eliminarEst({{$estudiante->id}})">
                                                     <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                                 </span>
                                             </td>
