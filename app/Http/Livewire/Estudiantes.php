@@ -58,7 +58,7 @@ class Estudiantes extends Component
             'grupo_id' => 'required',
             'nombre' => 'required|min:3',
             'apellido' => 'required|min:3',
-            'usuario' => 'required|unique:estudiantes,usuario,' . $this->estudiante_id . ',id',
+            'usuario' => 'required|email|unique:estudiantes,usuario,' . $this->estudiante_id . ',id',
         ]);
 
         Estudiante::updateOrCreate(['id' => $this->estudiante_id], [
