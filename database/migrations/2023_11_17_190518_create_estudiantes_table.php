@@ -15,13 +15,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('grupo_id')->nullable();
             $table->foreign('grupo_id')->references('id')->on('grupos')->onDelete('cascade');
-            // $table->integer('id_registro')->nullable()->unique();
             $table->string('nombre');
             $table->string('apellido');
             $table->string('usuario')->unique();
-            $table->string('Genero');//M o F y 37 tipos de generos mas jajaja
+            $table->char('genero', 1)->nullable();
             $table->boolean('activo')->default(true);
-            $table->unique(['nombre', 'apellido']);
             $table->timestamps();
         });
     }
