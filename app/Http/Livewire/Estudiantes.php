@@ -33,6 +33,7 @@ class Estudiantes extends Component
     public function abrirMdlCrearEst()
     {
         $this->modal = true;
+        $this->resetValidation();
     }
 
     public function cerrarMdlCrearEst()
@@ -55,8 +56,8 @@ class Estudiantes extends Component
     {
         $this->validate([
             'grupo_id' => 'required',
-            'nombre' => 'required',
-            'apellido' => 'required',
+            'nombre' => 'required|min:3',
+            'apellido' => 'required|min:3',
             'usuario' => 'required|unique:estudiantes,usuario,' . $this->estudiante_id . ',id',
         ]);
 
@@ -67,8 +68,10 @@ class Estudiantes extends Component
             'usuario' => $this->usuario,
         ]);
 
-        session()->flash('message',
-            $this->estudiante_id ? 'Estudiante actualizado correctamente' : 'Estudiante creado correctamente');
+        session()->flash(
+            'message',
+            $this->estudiante_id ? 'Estudiante actualizado correctamente' : 'Estudiante creado correctamente'
+        );
 
         $this->clearMdlCrearEst();
         $this->cerrarMdlCrearEst();

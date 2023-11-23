@@ -27,27 +27,61 @@
         <div class="">
             <div class="d-flex justify-content-between">
                 <h5 class="">{{ $encabezadoModal }}</h5>
-                <button wire:click="cerrarMdlCrearEst()" type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+                <button wire:click="cerrarMdlCrearEst()" type="button" class="btn-close btn-close-white"
+                    aria-label="Close"></button>
             </div>
             <div class="">
                 <form>
                     <div class="mb-3">
                         <div class="mb-4">
+                            @foreach ($grupos as $grupo)
+                                {{$grupo->id}}
+                            @endforeach
                             <label for="grupo-id" class="col-form-label">Grupo:</label>
-                            <input required type="number" class="form-control" id="grupo-id" wire:model="grupo_id">
+                            <select class="form-control" id="grupo-id" wire:model="grupo_id">
+                                <option value="null" >Elija una opción</option>
+                                @foreach ($grupos as $grupo)
+                                    <option value="{{ $grupo->id }}" wire:key="grupo-{{ $grupo->id }}">
+                                        {{ $grupo->nombre }}</option>
+                                @endforeach
+                                @error('grupo_id')
+                                    <span class="ml-1 text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </select>
+                            </select>
                         </div>
                         <div class="mb-4">
                             <label for="nombre" class="col-form-label">Nombre:</label>
-                            <input required type="text" class="form-control" id="nombre" wire:model="nombre">
+                            <input type="text" class="form-control" id="nombre" wire:model="nombre">
+                            @error('nombre')
+                                <span class="ml-1 text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="mb-4">
                             <label for="apellido" class="col-form-label">Apellido:</label>
-                            <input required type="text" class="form-control" id="apellido" wire:model="apellido">
+                            <input type="text" class="form-control" id="apellido" wire:model="apellido">
+                            @error('apellido')
+                                <span class="ml-1 text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="mb-4">
                             <label for="usuario" class="col-form-label">Usuario:</label>
-                            <input required type="email" class="form-control" id="usuario" wire:model="usuario">
+                            <input type="email" class="form-control" id="usuario" wire:model="usuario">
+                            @error('usuario')
+                                <span class="ml-1 text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                     </div>
                 </form>
             </div>
