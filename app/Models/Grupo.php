@@ -17,8 +17,8 @@ class Grupo extends Model
         return $this->hasMany(Estudiante::class);
     }
 
-    public function cursos()
+    public function users()
     {
-        return $this->belongsTo(Curso::class);
+        return $this->belongsTo(Curso::class,'docente_id');
     }
 }
