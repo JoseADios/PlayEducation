@@ -6,7 +6,6 @@
             @endif
         </div>
     </div>
-
     <div class="row">
         <div class="col-12">
             @if (session()->has('message'))
@@ -16,7 +15,6 @@
             @endif
         </div>
     </div>
-
     <div class="row">
         <div class="col-12">
             <div class="card my-4 mx-4 pb-4">
@@ -33,7 +31,6 @@
             </div>
         </div>
     </div>
-
     @foreach ($grupos as $grupo)
         <div class="row">
             <div class="col-12">
@@ -76,7 +73,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     @foreach ($grupo->estudiantes as $estudiante)
                                         <tr>
                                             <td class="ps-4">
@@ -93,7 +89,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $estudiante->created_at }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{{ $estudiante->created_at ? $estudiante->created_at->format('j M Y, g:i a') : 'N/A' }}</span>
                                             </td>
                                             <td class="text-center">
                                                 <a wire:click="editarEst({{ $estudiante->id }})" class="mx-3"
@@ -106,7 +102,6 @@
                                             </td>
                                         </tr>
                                     @endforeach
-
                                     @if ($grupo->estudiantes->isEmpty())
                                         <tr>
                                             <td colspan="6" class="text-center">
@@ -123,6 +118,4 @@
             </div>
         </div>
     @endforeach
-
-
 </div>

@@ -8,7 +8,9 @@ use Livewire\Component;
 class Estudiantes extends Component
 {
     public $grupos, $grupo_id, $nombre, $apellido, $usuario, $estudiante_id;
+
     public $modal = false;
+
     public $encabezadoModal = 'Crear Estudiante';
 
     public $docente;
@@ -70,7 +72,7 @@ class Estudiantes extends Component
 
         session()->flash(
             'message',
-            $this->estudiante_id ? 'Estudiante actualizado correctamente' : 'Estudiante creado correctamente'
+            $this->estudiante_id ? 'Estudiante actualizado exitosamente' : 'Estudiante creado exitosamente'
         );
 
         $this->clearMdlCrearEst();
@@ -95,6 +97,7 @@ class Estudiantes extends Component
     public function eliminarEst($id)
     {
         Estudiante::find($id)->delete();
+        session()->flash('message', 'Estudiante eliminado exitosamente');
     }
 
 }
