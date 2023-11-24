@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('puntuacion_minima');
             $table->unsignedBigInteger('juego_id');
-            $table->foreign('juego_id')->references('id')->on('juegos');
+            $table->foreign('juego_id')->references('id')->on('juegos')->restrictOnDelete();
             $table->string('titulo')->unique();
             $table->string('descripcion')->nullable();
             $table->string('ruta_imagen')->nullable();

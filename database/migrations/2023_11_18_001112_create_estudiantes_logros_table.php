@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('estudiantes_logros', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('estudiante_id')->constrained('estudiantes');
-            $table->foreignId('logro_id')->constrained('logros');
+            $table->foreignId('estudiante_id')->constrained('estudiantes')->restrictOnDelete();
+            $table->foreignId('logro_id')->constrained('logros')->restrictOnDelete();
             $table->dateTime('fecha_obtencion');
             $table->boolean('activo')->default(true);
             $table->timestamps();
