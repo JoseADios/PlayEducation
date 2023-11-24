@@ -6,17 +6,28 @@
             @endif
         </div>
     </div>
+
     <div class="row">
         <div class="col-12">
-            <div class="card mb-4 mx-4 pb-4">
+            @if (session()->has('message'))
+                <div class="mx-4 mb-0 alert alert-success fade show text-center" role="alert">
+                    <strong>{{ session('message') }}</strong>
+                </div>
+            @endif
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card my-4 mx-4 pb-4">
                 <div class="card-header pb-0">
                     <div class="d-flex flex-row justify-content-between">
                         <div>
                             <h5 class="mb-0">Todos los estudiantes</h5>
                         </div>
-                        <button wire:click="crearEst()" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp;
-                            New
-                            Student</button>
+                        <button wire:click="crearEst()" class="btn bg-gradient-primary btn-sm mb-0"
+                            type="button">+&nbsp;
+                            Crear estudiante</button>
                     </div>
                 </div>
             </div>
@@ -65,6 +76,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     @foreach ($grupo->estudiantes as $estudiante)
                                         <tr>
                                             <td class="ps-4">
@@ -84,17 +96,25 @@
                                                     class="text-secondary text-xs font-weight-bold">{{ $estudiante->created_at }}</span>
                                             </td>
                                             <td class="text-center">
-                                                <a wire:click="editarEst({{$estudiante->id}})" class="mx-3" data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Edit user">
+                                                <a wire:click="editarEst({{ $estudiante->id }})" class="mx-3"
+                                                    data-bs-toggle="tooltip" data-bs-original-title="Edit user">
                                                     <i class="fas fa-user-edit text-secondary"></i>
                                                 </a>
-                                                <span wire:click="eliminarEst({{$estudiante->id}})">
+                                                <span wire:click="eliminarEst({{ $estudiante->id }})">
                                                     <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                                 </span>
                                             </td>
                                         </tr>
                                     @endforeach
 
+                                    @if ($grupo->estudiantes->isEmpty())
+                                        <tr>
+                                            <td colspan="6" class="text-center">
+                                                <p class="text-xs font-weight-bold mb-0">No hay estudiantes en este
+                                                    grupo</p>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
