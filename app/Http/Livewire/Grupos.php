@@ -8,7 +8,7 @@ use App\Models\Grupo;
 class Grupos extends Component
 
 {
-    public $grupos, $nombre, $grupo_id ;
+    public $grupos, $docente_id, $nombre, $grupo_id ;
     public $modal = false;
 
     public function render() {
@@ -32,13 +32,14 @@ class Grupos extends Component
     }
 
     public function limpiarCampos() {
+        $this->docente_id = '';
         $this->nombre = '';
 
     }
 
     public function editar($id) {
         $grupo = Grupo::findOrFail($id);
-        $this->id = $id;
+        $this->docente_id = $grupo->docente_id;
         $this->nombre = $grupo->nombre;
         $this->abrirModal();
 
@@ -53,6 +54,7 @@ class Grupos extends Component
     public function guardar() {
         Grupo::updateOrCreate(['id'=>$this->grupo_id],
         [
+            'docente_id' => $this->doncente_id,
             'nombre' => $this->nombre
         ]);
 

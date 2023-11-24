@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->string('usuario')->unique();
-            $table->string('Genero');//M o F y 37 tipos de generos mas jajaja
+            $table->string('genero');//M o F y 37 tipos de generos mas jajaja
             $table->boolean('activo')->default(true);
             $table->unique(['nombre', 'apellido']);
             $table->timestamps();
