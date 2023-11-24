@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('puntuacions', function (Blueprint $table) {
+        Schema::create('observaciones', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('docente_id');
+            $table->foreign('docente_id')->references('id')->on('users')->restrictOnDelete();
             $table->unsignedBigInteger('estudiante_id');
             $table->foreign('estudiante_id')->references('id')->on('estudiantes')->restrictOnDelete();
-            $table->unsignedBigInteger('juego_id');
-            $table->foreign('juego_id')->references('id')->on('juegos')->restrictOnDelete();
-            $table->integer('puntuacion');
-            $table->integer('dificultad')->default(1);
+            $table->string('titulo');
+            $table->string('descripcion')->nullable();
             $table->boolean('activo')->default(true);
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('puntuacions');
+        Schema::dropIfExists('observaciones');
     }
 };
