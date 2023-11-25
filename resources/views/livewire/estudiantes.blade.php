@@ -1,8 +1,11 @@
 <div class="d-flex flex-column" style="overflow-x: hidden">
     <div class="row">
         <div class="col-12">
-            @if ($modal)
+            @if ($modalCrearEst)
                 @include('livewire.crearEstudiante')
+            @endif
+            @if ($modalEditarEst)
+                @include('livewire.actualizarEstudiante')
             @endif
         </div>
     </div>
@@ -74,6 +77,9 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($grupo->estudiantes as $estudiante)
+                                        @if ($estudiante->activo == 0)
+                                            @continue
+                                        @endif
                                         <tr>
                                             <td class="ps-4">
                                                 <p class="text-xs font-weight-bold mb-0">{{ $estudiante->id }}</p>

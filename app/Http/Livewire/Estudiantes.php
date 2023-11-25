@@ -9,9 +9,8 @@ class Estudiantes extends Component
 {
     public $grupos, $grupo_id, $nombre, $apellido, $usuario, $estudiante_id;
 
-    public $modal = false;
-
-    public $encabezadoModal = 'Crear Estudiante';
+    public $modalCrearEst = false;
+    public $modalEditarEst = false;
 
     public $docente;
 
@@ -34,19 +33,19 @@ class Estudiantes extends Component
 
     public function abrirMdlCrearEst()
     {
-        $this->modal = true;
+        $this->modalCrearEst = true;
+        $this->modalEditarEst = false;
         $this->resetValidation();
     }
 
     public function cerrarMdlCrearEst()
     {
-        $this->modal = false;
+        $this->modalCrearEst = false;
         $this->clearMdlCrearEst();
     }
 
     public function clearMdlCrearEst()
     {
-        $this->encabezadoModal = 'Crear Estudiante';
         $this->estudiante_id = '';
         $this->grupo_id = '';
         $this->nombre = '';
@@ -79,10 +78,17 @@ class Estudiantes extends Component
         $this->cerrarMdlCrearEst();
     }
 
+    // Editar Estudiante
+
+    public function abrirMdlEditarEst()
+    {
+        $this->modalEditarEst = true;
+        $this->modalCrearEst = false;
+        $this->resetValidation();
+    }
+
     public function editarEst($id)
     {
-        $this->encabezadoModal = 'Editar Estudiante';
-
         $estudiante = Estudiante::findOrFail($id);
 
         $this->estudiante_id = $id;
@@ -91,12 +97,21 @@ class Estudiantes extends Component
         $this->apellido = $estudiante->apellido;
         $this->usuario = $estudiante->usuario;
 
-        $this->abrirMdlCrearEst();
+        $this->abrirMdlEditarEst();
     }
+
+    public function cerrarMdlEditarEst()
+    {
+        $this->modalEditarEst = false;
+        $this->clearMdlCrearEst();
+    }
+
+    // Eliminar Estudiante
 
     public function eliminarEst($id)
     {
-        Estudiante::find($id)->delete();
+        // Estudiante::find($id)->delete();
+        Estudiante::find($id)->update(['activo' => 0]);
         session()->flash('message', 'Estudiante eliminado exitosamente');
     }
 

@@ -14,9 +14,10 @@
     .mdl {
         background-color: white;
         border-radius: 10px;
-        width: 30%;
-        max-width: 30%;
-        max-height: 100%;
+        width: 95%;
+        max-width: 95%;
+        height: 90%;
+        max-height: 90%;
         border: 1px solid #ccc;
         box-shadow: #00000047 0px 0px 79px -7px;
     }
@@ -32,8 +33,8 @@
     <div class="position-fixed mdl p-4" id="modalCreaEst">
         <div class="">
             <div class="d-flex justify-content-between">
-                <h5 class="">Crear estudiante</h5>
-                <button wire:click="cerrarMdlCrearEst()" type="button" class="btn-close btn-close-white"
+                <h5 class="">Actualizar estudiante</h5>
+                <button wire:click="cerrarMdlEditarEst()" type="button" class="btn-close btn-close-white"
                     aria-label="Close"></button>
             </div>
             <div class="">
@@ -84,8 +85,8 @@
                 </form>
             </div>
             <div class="d-flex justify-content-between align-items-center">
-                <button type="button" wire:click="cerrarMdlCrearEst()" class="btn btn-secondary mb-0">Close</button>
-                <button type="button" wire:click="guardarEst()" class="btn btn-primary mb-0">Save changes</button>
+                <button type="button" wire:click="cerrarMdlEditarEst()" class="btn btn-secondary mb-0">Close</button>
+                <button type="button" wire:click="guardarEstEditado()" class="btn btn-primary mb-0">Save changes</button>
             </div>
         </div>
     </div>
