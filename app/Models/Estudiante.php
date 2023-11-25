@@ -9,6 +9,13 @@ class Estudiante extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'grupo_id',
+        'nombre',
+        'apellido',
+        'usuario',
+    ];
+
     public function observaciones()
     {
         return $this->hasMany(Observacion::class);

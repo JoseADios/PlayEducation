@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('juegos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('tipo_juego_id');
-            $table->foreign('tipo_juego_id')->references('id')->on('tipo_juegos')->onDelete('cascade');
+            $table->foreign('tipo_juego_id')->references('id')->on('tipo_juegos')->restrictOnDelete();
             $table->string('nombre')->unique();
             $table->string('descripcion')->nullable();
             $table->timestamps();

@@ -14,14 +14,12 @@ return new class extends Migration
         Schema::create('estudiantes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('grupo_id')->nullable();
-            $table->foreign('grupo_id')->references('id')->on('grupos')->onDelete('cascade');
-            // $table->integer('id_registro')->nullable()->unique();
+            $table->foreign('grupo_id')->references('id')->on('grupos')->restrictOnDelete();
             $table->string('nombre');
             $table->string('apellido');
             $table->string('usuario')->unique();
-            $table->string('genero');//M o F y 37 tipos de generos mas jajaja
+            $table->char('genero', 1)->nullable();
             $table->boolean('activo')->default(true);
-            $table->unique(['nombre', 'apellido']);
             $table->timestamps();
         });
     }
