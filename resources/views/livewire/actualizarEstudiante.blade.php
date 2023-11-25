@@ -31,64 +31,88 @@
 <div class="d-flex p-2 position-fixed cont-modal">
 
     <div class="position-fixed mdl p-4" id="modalCreaEst">
-        <div class="">
+        <div class="row">
             <div class="d-flex justify-content-between">
-                <h5 class="">Actualizar estudiante</h5>
+                <h3 class="">Actualizar estudiante</h3>
                 <button wire:click="cerrarMdlEditarEst()" type="button" class="btn-close btn-close-white"
                     aria-label="Close"></button>
             </div>
-            <div class="">
-                <form>
-                    <div class="mb-3">
-                        <div class="mb-4">
+            <div class="col">
+                <div class="">
+                    <form>
+                        <div class="mb-3">
+                            <div class="mb-4 row">
+                                <div class="col">
+                                    <label for="grupo-id" class="col-form-label">Grupo:</label>
+                                    <select class="form-control" id="grupo-id" wire:model="grupo_id">
+                                        <option value="null">Elija una opción</option>
 
-                            <label for="grupo-id" class="col-form-label">Grupo:</label>
-                            <select class="form-control" id="grupo-id" wire:model="grupo_id">
-                                <option value="null">Elija una opción</option>
+                                        @foreach ($grupos as $grupo)
+                                            <option value="{{ $grupo->id }}" wire:key="grupo-{{ $grupo->id }}">
+                                                {{ $grupo->nombre }}</option>
+                                        @endforeach
 
-                                @foreach ($grupos as $grupo)
-                                    <option value="{{ $grupo->id }}" wire:key="grupo-{{ $grupo->id }}">
-                                        {{ $grupo->nombre }}</option>
-                                @endforeach
+                                    </select>
+                                    @error('grupo_id')
+                                        <span class="ml-1 text-danger error-campo">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col">
+                                    <label for="genero" class="col-form-label">Genero:</label>
+                                    <select class="form-control" id="genero" wire:model="genero">
+                                        <option >Elija una opción</option>
+                                        <option value="m">Masculino</option>
+                                        <option value="f">Femenino</option>
+                                    </select>
+                                    @error('genero')
+                                        <span class="ml-1 text-danger error-campo">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
 
-                            </select>
-                            @error('grupo_id')
-                                <span class="ml-1 text-danger error-campo">{{ $message }}</span>
-                            @enderror
+                            <div class="mb-4">
+                                <label for="nombre" class="col-form-label">Nombre:</label>
+                                <input type="text" class="form-control" id="nombre" wire:model="nombre">
+                                @error('nombre')
+                                    <span class="ml-1 text-danger error-campo">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="apellido" class="col-form-label">Apellido:</label>
+                                <input type="text" class="form-control" id="apellido" wire:model="apellido">
+                                @error('apellido')
+                                    <span class="ml-1 text-danger error-campo">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="usuario" class="col-form-label">Usuario:</label>
+                                <input type="email" class="form-control" id="usuario" wire:model="usuario">
+                                @error('usuario')
+                                    <span class="ml-1 text-danger error-campo">{{ $message }}</span>
+                                @enderror
+                            </div>
+
                         </div>
-
-                        <div class="mb-4">
-                            <label for="nombre" class="col-form-label">Nombre:</label>
-                            <input type="text" class="form-control" id="nombre" wire:model="nombre">
-                            @error('nombre')
-                                <span class="ml-1 text-danger error-campo">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="apellido" class="col-form-label">Apellido:</label>
-                            <input type="text" class="form-control" id="apellido" wire:model="apellido">
-                            @error('apellido')
-                                <span class="ml-1 text-danger error-campo">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="usuario" class="col-form-label">Usuario:</label>
-                            <input type="email" class="form-control" id="usuario" wire:model="usuario">
-                            @error('usuario')
-                                <span class="ml-1 text-danger error-campo">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
+            <div class="col">
+                <h5>Observaciones</h5>
+            </div>
+            <div class="col">
+                <h5>Puntuaciones</h5>
+            </div>
+
             <div class="d-flex justify-content-between align-items-center">
-                <button type="button" wire:click="cerrarMdlEditarEst()" class="btn btn-secondary mb-0">Close</button>
-                <button type="button" wire:click="guardarEstEditado()" class="btn btn-primary mb-0">Save changes</button>
+                <button type="button" wire:click="cerrarMdlEditarEst()"
+                    class="btn btn-secondary mb-0">Close</button>
+                <button type="button" wire:click="guardarEstEditado()" class="btn btn-primary mb-0">Save
+                    changes</button>
             </div>
         </div>
+
     </div>
 
 </div>

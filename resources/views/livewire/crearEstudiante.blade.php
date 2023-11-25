@@ -39,21 +39,34 @@
             <div class="">
                 <form>
                     <div class="mb-3">
-                        <div class="mb-4">
 
-                            <label for="grupo-id" class="col-form-label">Grupo:</label>
-                            <select class="form-control" id="grupo-id" wire:model="grupo_id">
-                                <option value="null">Elija una opción</option>
+                        <div class="mb-4 row">
+                            <div class="col">
+                                <label for="grupo-id" class="col-form-label">Grupo:</label>
+                                <select class="form-control" id="grupo-id" wire:model="grupo_id">
+                                    <option value="null">Elija una opción</option>
 
-                                @foreach ($grupos as $grupo)
-                                    <option value="{{ $grupo->id }}" wire:key="grupo-{{ $grupo->id }}">
-                                        {{ $grupo->nombre }}</option>
-                                @endforeach
+                                    @foreach ($grupos as $grupo)
+                                        <option value="{{ $grupo->id }}" wire:key="grupo-{{ $grupo->id }}">
+                                            {{ $grupo->nombre }}</option>
+                                    @endforeach
 
-                            </select>
-                            @error('grupo_id')
-                                <span class="ml-1 text-danger error-campo">{{ $message }}</span>
-                            @enderror
+                                </select>
+                                @error('grupo_id')
+                                    <span class="ml-1 text-danger error-campo">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col">
+                                <label for="genero" class="col-form-label">Genero:</label>
+                                <select class="form-control" id="genero" wire:model="genero">
+                                    <option >Elija una opción</option>
+                                    <option value="m">Masculino</option>
+                                    <option value="f">Femenino</option>
+                                </select>
+                                @error('genero')
+                                    <span class="ml-1 text-danger error-campo">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
 
                         <div class="mb-4">
