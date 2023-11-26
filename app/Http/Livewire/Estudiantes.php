@@ -4,11 +4,10 @@ namespace App\Http\Livewire;
 
 use App\Models\Estudiante;
 use Livewire\Component;
-use Illuminate\Validation\Rule;
 
 class Estudiantes extends Component
 {
-    public $grupos, $estudiante_id, $grupo_id, $nombre, $apellido, $usuario, $genero;
+    public $grupos, $estudiante_id, $grupo_id, $nombre, $apellido, $usuario, $genero, $observaciones;
 
     public $modalCrearEst = false;
     public $modalEditarEst = false;
@@ -53,6 +52,7 @@ class Estudiantes extends Component
         $this->apellido = '';
         $this->usuario = '';
         $this->genero = '';
+        $this->observaciones = '';
     }
 
     public function guardarEst()
@@ -95,6 +95,8 @@ class Estudiantes extends Component
     {
         $estudiante = Estudiante::findOrFail($id);
 
+        $this->getObservaciones($estudiante);
+
         $this->estudiante_id = $id;
         $this->grupo_id = $estudiante->grupo_id;
         $this->nombre = $estudiante->nombre;
@@ -109,6 +111,10 @@ class Estudiantes extends Component
     {
         $this->modalEditarEst = false;
         $this->clearMdlCrearEst();
+    }
+
+    public function getObservaciones($estudiante) {
+        $this->observaciones = $estudiante->observaciones()->orderBy('created_at', 'desc')->get();
     }
 
     // Eliminar Estudiante
