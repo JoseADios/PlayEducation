@@ -2,12 +2,16 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\ObservacionController;
 use App\Models\Estudiante;
+use App\Models\Observacion;
 use Livewire\Component;
 
 class Estudiantes extends Component
 {
-    public $grupos, $estudiante_id, $grupo_id, $nombre, $apellido, $usuario, $genero, $observaciones;
+    public $grupos, $grupo_id, $estudiante_id, $nombre, $apellido, $usuario, $genero;
+
+    public $observaciones, $observacion_id, $titulo, $descripcion;
 
     public $modalCrearEst = false;
     public $modalEditarEst = false;
@@ -53,17 +57,23 @@ class Estudiantes extends Component
         $this->usuario = '';
         $this->genero = '';
         $this->observaciones = '';
+        $this->observacion_id = '';
+        $this->titulo = '';
+        $this->descripcion = '';
     }
 
     public function guardarEst()
     {
         $this->validate([
-            'grupo_id' => 'required',
+            'grupo_id' => 'required|integer',
             'nombre' => 'required|min:3',
             'apellido' => 'required|min:3',
-            'genero' => 'max:1 | required',
             'usuario' => 'required|email|unique:estudiantes,usuario,' . $this->estudiante_id . ',id',
         ]);
+
+        if ($this->genero == 'null') {
+            $this->genero = null;
+        }
 
         Estudiante::updateOrCreate(['id' => $this->estudiante_id], [
             'grupo_id' => $this->grupo_id,
@@ -80,6 +90,7 @@ class Estudiantes extends Component
 
         $this->clearMdlCrearEst();
         $this->cerrarMdlCrearEst();
+        $this->cerrarMdlEditarEst();
     }
 
     // Editar Estudiante
@@ -95,7 +106,7 @@ class Estudiantes extends Component
     {
         $estudiante = Estudiante::findOrFail($id);
 
-        $this->getObservaciones($estudiante);
+        $this->observaciones = $this->getObservaciones($estudiante);
 
         $this->estudiante_id = $id;
         $this->grupo_id = $estudiante->grupo_id;
@@ -113,10 +124,6 @@ class Estudiantes extends Component
         $this->clearMdlCrearEst();
     }
 
-    public function getObservaciones($estudiante) {
-        $this->observaciones = $estudiante->observaciones()->orderBy('created_at', 'desc')->get();
-    }
-
     // Eliminar Estudiante
 
     public function eliminarEst($id)
@@ -124,6 +131,43 @@ class Estudiantes extends Component
         // Estudiante::find($id)->delete();
         Estudiante::find($id)->update(['activo' => 0]);
         session()->flash('message', 'Estudiante eliminado exitosamente');
+    }
+
+    // Observaciones
+
+    public function getObservaciones($estudiante)
+    {
+        return $estudiante->observaciones()->get();
+    }
+
+    public function clearObservaciones()
+    {
+        $this->observacion_id = '';
+        $this->titulo = '';
+        $this->descripcion = '';
+    }
+
+    public function guardarObservacion()
+    {
+        $this->resetValidation();
+
+        $this->validate([
+            'titulo' => 'required|min:3',
+            'descripcion' => 'required|min:3',
+        ]);
+
+        $estudiante = Estudiante::findOrFail($this->estudiante_id);
+
+        $estudiante->observaciones()->create([
+            'docente_id' => $this->docente->id,
+            'titulo' => $this->titulo,
+            'descripcion' => $this->descripcion,
+        ]);
+
+        $this->observaciones = $this->getObservaciones($estudiante);
+
+        $this->clearObservaciones();
+
     }
 
 }

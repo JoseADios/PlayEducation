@@ -40,7 +40,7 @@
                 <form>
                     <div class="mb-3">
 
-                        <div class="mb-4 row">
+                        <div class="mb-4 position-relative row">
                             <div class="col">
                                 <label for="grupo-id" class="col-form-label">Grupo:</label>
                                 <select class="form-control" id="grupo-id" wire:model="grupo_id">
@@ -53,7 +53,7 @@
 
                                 </select>
                                 @error('grupo_id')
-                                    <span class="ml-1 text-danger error-campo">{{ $message }}</span>
+                                    <span class="ml-1 text-danger error-campo position-absolute">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="col">
@@ -64,32 +64,32 @@
                                     <option value="f">Femenino</option>
                                 </select>
                                 @error('genero')
-                                    <span class="ml-1 text-danger error-campo">{{ $message }}</span>
+                                    <span class="ml-1 text-danger error-campo position-absolute">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
 
-                        <div class="mb-4">
+                        <div class="mb-4 position-relative">
                             <label for="nombre" class="col-form-label">Nombre:</label>
                             <input type="text" class="form-control" id="nombre" wire:model="nombre">
                             @error('nombre')
-                                <span class="ml-1 text-danger error-campo">{{ $message }}</span>
+                                <span class="ml-1 text-danger error-campo position-absolute">{{ $message }}</span>
                             @enderror
                         </div>
 
-                        <div class="mb-4">
+                        <div class="mb-4 position-relative">
                             <label for="apellido" class="col-form-label">Apellido:</label>
                             <input type="text" class="form-control" id="apellido" wire:model="apellido">
                             @error('apellido')
-                                <span class="ml-1 text-danger error-campo">{{ $message }}</span>
+                                <span class="ml-1 text-danger error-campo position-absolute">{{ $message }}</span>
                             @enderror
                         </div>
 
-                        <div class="mb-4">
+                        <div class="mb-4 position-relative">
                             <label for="usuario" class="col-form-label">Usuario:</label>
                             <input type="email" class="form-control" id="usuario" wire:model="usuario">
                             @error('usuario')
-                                <span class="ml-1 text-danger error-campo">{{ $message }}</span>
+                                <span class="ml-1 text-danger error-campo position-absolute">{{ $message }}</span>
                             @enderror
                         </div>
 
