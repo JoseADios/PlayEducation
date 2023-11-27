@@ -9,6 +9,14 @@ class Observacion extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'titulo',
+        'descripcion',
+        'estudiante_id',
+        'user_id',
+        'docente_id',
+    ];
+
     public function estudiantes()
     {
         return $this->belongsTo(Estudiante::class);

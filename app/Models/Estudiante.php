@@ -14,6 +14,8 @@ class Estudiante extends Model
         'nombre',
         'apellido',
         'usuario',
+        'activo',
+        'genero',
     ];
 
     public function observaciones()
