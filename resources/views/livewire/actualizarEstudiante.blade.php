@@ -165,7 +165,7 @@
                 <div class="px-2 col">
                     <div class="row-4">
                         <h6><i>Logros</i></h6>
-                        <div class="overflow-hidden">
+                        <div wire:ignore class="overflow-hidden">
                             @livewire('logros', ['estudiante_id' => $estudiante_id])
                         </div>
                     </div>
