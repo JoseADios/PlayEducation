@@ -49,7 +49,7 @@
                 <button wire:click="cerrarMdlEditarEst()" type="button" class="btn-close btn-close-white"
                     aria-label="Close"></button>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <div class="px-2">
                     <h5>Datos personales</h5>
                     <form>
@@ -113,7 +113,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <h5>Observaciones</h5>
                 <div class="d-flex flex-column">
                     <div class="col observaciones d-flex flex-column align-items-center mt-3 border rounded-3 px-2 overflow-y-scroll"
@@ -160,9 +160,17 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <h5>Puntuaciones</h5>
-                <div class="px-2"></div>
+                <div class="px-2 col">
+                    <div class="row-4">
+                        <h6><i>Logros</i></h6>
+                        <div class="overflow-hidden">
+                            @livewire('logros', ['estudiante_id' => $estudiante_id])
+                        </div>
+                    </div>
+                    <div class="row-8"></div>
+                </div>
             </div>
 
             <div class="d-flex justify-content-between align-items-center">
