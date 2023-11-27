@@ -38,6 +38,16 @@
         position: relative;
         top: 8rem;
     }
+
+    .botns-inf {
+        position: absolute;
+        bottom: 1.5rem;
+    }
+
+    .bt-guardar {
+        margin-right: 1.3rem;
+    }
+
 </style>
 
 
@@ -49,8 +59,8 @@
                 <button wire:click="cerrarMdlEditarEst()" type="button" class="btn-close btn-close-white"
                     aria-label="Close"></button>
             </div>
-            <div class="col-4">
-                <div class="px-2">
+            <div class="col-4 px-3">
+                <div class="">
                     <h5>Datos personales</h5>
                     <form>
                         <div class="mb-3">
@@ -113,7 +123,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-4 px-3">
                 <h5>Observaciones</h5>
                 <div class="d-flex flex-column">
                     <div class="col observaciones d-flex flex-column align-items-center mt-3 border rounded-3 px-2 overflow-y-scroll"
@@ -153,29 +163,34 @@
                                 <span class="ml-1 text-danger error-campo">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col d-flex justify-content-end">
+                        <div class="col">
                             <button type="button" wire:click="guardarObservacion()"
                                 class="btn btn-primary">Guardar</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-4 px-3">
                 <h5>Puntuaciones</h5>
-                <div class="px-2 col">
+                <div class="col">
                     <div class="row-4">
                         <h6><i>Logros</i></h6>
                         <div wire:ignore class="overflow-hidden">
                             @livewire('logros', ['estudiante_id' => $estudiante_id])
                         </div>
                     </div>
-                    <div class="row-8"></div>
+                    <div class="row-8 mt-4">
+                        <h6><i>Actividades recientes</i></h6>
+                        <div wire:ignore class="overflow-hidden">
+                            @livewire('puntuaciones', ['estudiante_id' => $estudiante_id])
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="botns-inf d-flex justify-content-between align-items-center">
                 <button type="button" wire:click="cerrarMdlEditarEst()" class="btn btn-secondary mb-0">Close</button>
-                <button type="button" wire:click="guardarEst()" class="btn btn-primary mb-0">Save
+                <button type="button" wire:click="guardarEst()" class="btn btn-primary mb-0 bt-guardar">Save
                     changes</button>
             </div>
         </div>

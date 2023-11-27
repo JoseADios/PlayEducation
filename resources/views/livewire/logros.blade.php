@@ -17,7 +17,7 @@
     .no-logros {
         align-self: center;
         position: relative;
-        left: 37%;
+        left: 35%;
     }
 
     /* Estilo de la barra de desplazamiento */
@@ -57,36 +57,9 @@
                 <p class="text-center titulo">{{ $logro->titulo }}</p>
             </div>
         @endforeach
-        @foreach ($logros as $logro)
-            <div class="mx-2 d-flex flex-column align-items-center mt-2">
-                <img title="{{ $logro->descripcion }}" src="images/logros/{{ $logro->ruta_imagen }}"
-                    alt="{{ $logro->titulo }}">
-                <p class="text-center titulo">{{ $logro->titulo }}</p>
-            </div>
-        @endforeach
-        @foreach ($logros as $logro)
-            <div class="mx-2 d-flex flex-column align-items-center mt-2">
-                <img title="{{ $logro->descripcion }}" src="images/logros/{{ $logro->ruta_imagen }}"
-                    alt="{{ $logro->titulo }}">
-                <p class="text-center titulo">{{ $logro->titulo }}</p>
-            </div>
-        @endforeach
-        @foreach ($logros as $logro)
-            <div class="mx-2 d-flex flex-column align-items-center mt-2">
-                <img title="{{ $logro->descripcion }}" src="images/logros/{{ $logro->ruta_imagen }}"
-                    alt="{{ $logro->titulo }}">
-                <p class="text-center titulo">{{ $logro->titulo }}</p>
-            </div>
-        @endforeach
-        @foreach ($logros as $logro)
-            <div class="mx-2 d-flex flex-column align-items-center mt-2">
-                <img title="{{ $logro->descripcion }}" src="images/logros/{{ $logro->ruta_imagen }}"
-                    alt="{{ $logro->titulo }}">
-                <p class="text-center titulo">{{ $logro->titulo }}</p>
-            </div>
-        @endforeach
+
         @if (count($logros) == 0)
-            <p class="text-center titulo no-logros">No hay logros</p>
+            <p class="text-center titulo no-logros">Aún no hay logros</p>
         @endif
     </div>
 </div>
