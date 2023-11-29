@@ -1,4 +1,14 @@
 <style>
+    :root {
+        --color-azul: #4b68e6;
+        --color-amarillo: #fec200;
+        --color-rojo: #f73861;
+        --color-turquesa: #0ec7a7;
+        --color-verde: #87c92b;
+        --color-morado: #87c92b;
+        --color-naranja: #fb6f1a;
+    }
+
     .cont-modal {
         z-index: 10000 !important;
         width: 100%;
@@ -44,10 +54,45 @@
         bottom: 1.5rem;
     }
 
-    .bt-guardar {
+    .btn-guardar {
         margin-right: 1.3rem;
     }
 
+    .btn-prim {
+        background-color: var(--color-azul);
+        border-color: var(--color-azul);
+        color: white;
+    }
+
+    .btn-prim:hover {
+        background-color: var(--color-azul);
+        border-color: var(--color-azul);
+        color: white;
+    }
+
+    .btn-sec {
+        background-color: white;
+        border-color: var(--color-azul);
+        color: var(--color-azul);
+    }
+
+    .btn-sec:hover {
+        background-color: white;
+        border-color: var(--color-azul);
+        color: var(--color-azul);
+    }
+
+    .btn-tur {
+        background-color: var(--color-turquesa);
+        border-color: var(--color-turquesa);
+        color: white;
+    }
+
+    .btn-tur:hover {
+        background-color: var(--color-turquesa);
+        border-color: var(--color-turquesa);
+        color: white;
+    }
 </style>
 
 
@@ -165,7 +210,7 @@
                         </div>
                         <div class="col">
                             <button type="button" wire:click="guardarObservacion()"
-                                class="btn btn-primary">Guardar</button>
+                                class="btn btn-tur">Guardar</button>
                         </div>
                     </div>
                 </div>
@@ -189,8 +234,8 @@
             </div>
 
             <div class="botns-inf d-flex justify-content-between align-items-center">
-                <button type="button" wire:click="cerrarMdlEditarEst()" class="btn btn-secondary mb-0">Close</button>
-                <button type="button" wire:click="guardarEst()" class="btn btn-primary mb-0 bt-guardar">Save
+                <button type="button" wire:click="cerrarMdlEditarEst()" class="btn btn-sec mb-0">Close</button>
+                <button type="button" wire:click="guardarEst()" class="btn btn-prim mb-0 btn-guardar">Save
                     changes</button>
             </div>
         </div>
