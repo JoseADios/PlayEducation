@@ -97,10 +97,36 @@
                 </form>
             </div>
             <div class="d-flex justify-content-between align-items-center">
-                <button type="button" wire:click="cerrarMdlCrearEst()" class="btn btn-secondary mb-0">Close</button>
-                <button type="button" wire:click="guardarEst()" class="btn btn-primary mb-0">Save changes</button>
+                <button type="button" wire:click="cerrarMdlCrearEst()" class="btn btn-sec mb-0">Close</button>
+                <button type="button" wire:click="guardarEst()" class="btn btn-prim mb-0">Save changes</button>
             </div>
         </div>
     </div>
 
 </div>
+
+<style>
+    .btn-prim {
+        background-color: #4b68e6;
+        border-color: #4b68e6;
+        color: #ffffff;
+    }
+
+    .btn-prim:hover {
+        background-color: #4b68e6;
+        border-color: #5b55e6;
+    }
+
+    .btn-sec {
+        background-color: #ffffff;
+        border-color: #4b68e6;
+        color: #4b68e6;
+    }
+
+    .btn-sec:hover {
+        background-color: #f2f2f2;
+        border-color: #4b68e6;
+        color: #4b68e6;
+    }
+
+</style>

@@ -1,3 +1,4 @@
+
 <div class="d-flex flex-column" style="overflow-x: hidden">
     <div class="row">
         <div class="col-12">
@@ -26,8 +27,7 @@
                         <div>
                             <h5 class="mb-0">Todos los estudiantes</h5>
                         </div>
-                        <button wire:click="crearEst()" class="btn bg-gradient-primary btn-sm mb-0"
-                            type="button">+&nbsp;
+                        <button wire:click="crearEst()" class="btn btn-morado btn-sm mb-0" type="button">+&nbsp;
                             Crear estudiante</button>
                     </div>
                 </div>
@@ -125,3 +125,15 @@
         </div>
     @endforeach
 </div>
+
+<style>
+    .btn-morado {
+        background-color: #ac26c3;
+
+        color: white;
+    }
+    .btn-morado:hover {
+        background-color: #ac26c3;
+        color: white;
+    }
+</style>

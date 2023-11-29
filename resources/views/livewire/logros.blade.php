@@ -1,4 +1,5 @@
 <style>
+
     .logros-cont {
         overflow-x: scroll;
         height: 6rem;
