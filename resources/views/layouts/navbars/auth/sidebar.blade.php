@@ -90,9 +90,9 @@
                 <a class="nav-link {{ Route::currentRouteName() == 'estudiantes' ? 'active' : '' }}"
                     href="{{ route('estudiantes') }}">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-info text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center
-                        {{ in_array(request()->route()->getName(),['estudiantes']) ? 'text-white' : 'text-dark' }}"></i>
+                        {{ in_array(request()->route()->getName(),['estudiantes']) ? 'text-white' : 'text-white' }}"></i>
                     </div>
 
                     <span class="nav-link-text ms-1">Estudiantes</span>
@@ -105,9 +105,9 @@
                 <a class="nav-link {{ Route::currentRouteName() == 'grupos' ? 'active' : '' }}"
                     href="{{ route('grupos') }}">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-success text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center
-                        {{ in_array(request()->route()->getName(),['grupos']) ? 'text-white' : 'text-dark' }}"></i>
+                        {{ in_array(request()->route()->getName(),['grupos']) ? 'text-white' : 'text-white' }}"></i>
                     </div>
 
                     <span class="nav-link-text ms-1">Grupos</span>

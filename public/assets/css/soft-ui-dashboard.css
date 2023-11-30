@@ -59,6 +59,13 @@
   --bs-body-line-height: 1.5;
   --bs-body-color: #67748e;
   --bs-body-bg: #fff;
+  --color-azul: #4b68e6;
+  --color-amarillo: #fec200;
+  --color-rojo: #f73861;
+  --color-turquesa: #0ec7a7;
+  --color-verde: #87c92b;
+  --color-morado: #87c92b;
+  --color-naranja: #fb6f1a;
 }
 
 *,

@@ -21,7 +21,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <div class="card my-4 mx-4 pb-4">
+            <div class="card my-4 mx-4 pb-4 head-ests">
                 <div class="card-header pb-0">
                     <div class="d-flex flex-row justify-content-between">
                         <div>
@@ -127,6 +127,9 @@
 </div>
 
 <style>
+    .head-ests {
+        box-shadow: 0 20px 27px 0 #ac26c32d;
+    }
     .btn-morado {
         background-color: #ac26c3;
 
