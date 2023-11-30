@@ -28,7 +28,22 @@ class GrupoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            // Otros campos requeridos o validaciones según tus necesidades
+        ]);
+
+        $grupo = new Grupo([
+            'nombre' => $request->nombre,
+            'docente_id' => auth()->user()->id, // Asociar al usuario autenticado
+        ]);
+
+        $grupo->save();
+
+        session()->flash('message', 'Grupo creado exitosamente.');
+
+        return redirect()->route('grupos.index');
+
     }
 
     /**

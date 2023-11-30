@@ -9,7 +9,7 @@ class Grupo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'docente_id','password_temp','fecha_expiracion','descripcion'];
 
     public function estudiantes()
     {
@@ -19,6 +19,9 @@ class Grupo extends Model
     public function users()
     {
         return $this->belongsTo(User::class, 'docente_id');
+
     }
 
 }
+
+
