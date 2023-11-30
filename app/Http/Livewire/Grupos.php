@@ -8,7 +8,7 @@ use App\Models\Grupo;
 class Grupos extends Component
 {
     public $grupos, $docente_id, $nombre, $grupo_id, $password_temp, $fecha_expiracion, $descripcion;
-    public $modal = false;
+    public $modal = false; 
 
     public function crearGrupo()
     {
