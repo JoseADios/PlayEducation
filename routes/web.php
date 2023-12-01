@@ -35,7 +35,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function() {
-    return redirect('/login');
+    return view('index');
 });
 
 Route::get('/sign-up', SignUp::class)->name('sign-up');

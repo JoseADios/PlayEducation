@@ -1,4 +1,3 @@
-
 <div class="d-flex flex-column" style="overflow-x: hidden">
     <div class="row">
         <div class="col-12">
@@ -102,7 +101,7 @@
                                                     data-bs-toggle="tooltip" data-bs-original-title="Edit user">
                                                     <i class="fas fa-user-edit text-secondary"></i>
                                                 </a>
-                                                <span wire:click="eliminarEst({{ $estudiante->id }})">
+                                                <span data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                     <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                                 </span>
                                             </td>
@@ -130,11 +129,13 @@
     .head-ests {
         box-shadow: 0 20px 27px 0 #ac26c32d;
     }
+
     .btn-morado {
         background-color: #ac26c3;
 
         color: white;
     }
+
     .btn-morado:hover {
         background-color: #ac26c3;
         color: white;

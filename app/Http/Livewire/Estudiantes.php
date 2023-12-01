@@ -91,6 +91,9 @@ class Estudiantes extends Component
         $this->clearMdlCrearEst();
         $this->cerrarMdlCrearEst();
         $this->cerrarMdlEditarEst();
+
+        // recargar la vista nuevamente
+        $this->mount();
     }
 
     // Editar Estudiante
@@ -131,6 +134,9 @@ class Estudiantes extends Component
         // Estudiante::find($id)->delete();
         Estudiante::find($id)->update(['activo' => 0]);
         session()->flash('message', 'Estudiante eliminado exitosamente');
+
+        $this->emit('estudianteEliminado');
+        $this->mount();
     }
 
     // Observaciones
@@ -169,7 +175,5 @@ class Estudiantes extends Component
         $this->clearObservaciones();
 
     }
-
-    // logros
 
 }
