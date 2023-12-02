@@ -138,7 +138,7 @@
             color: var(--color-azul);
         }
 
-        .title-3{
+        .title-3 {
             color: var(--color-morado);
         }
 
@@ -216,6 +216,73 @@
             background-color: var(--color-verde);
             border-color: var(--color-verde);
         }
+
+        .cont-img-about {
+            background-image: url('/images/home/niños-estudiando.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .color-azul {
+            color: var(--color-azul);
+        }
+
+        .color-amarillo {
+            color: var(--color-amarillo);
+        }
+
+        .color-rojo {
+            color: var(--color-rojo);
+        }
+
+        .color-turquesa {
+            color: var(--color-turquesa);
+        }
+
+        .color-verde {
+            color: var(--color-verde);
+        }
+
+        .color-morado {
+            color: var(--color-morado);
+        }
+
+        .color-naranja {
+            color: var(--color-naranja);
+        }
+
+
+        .card:hover {
+            box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+        }
+
+        .cont-about-1 {
+            border: #0ec7a773 solid 2px;
+            border-radius: 2rem;
+            overflow: hidden;
+        }
+        .cont-about-2 {
+            border: #fb6f1aa3 solid 2px;
+            border-radius: 2rem;
+            overflow: hidden;
+        }
+        .cont-about-3 {
+            border: #ac26c3ab solid 2px;
+            border-radius: 2rem;
+            overflow: hidden;
+        }
+
+        footer{
+            background-color: #e4e8f3;;
+            border-top: 1px solid #e3e6ef;
+        }
+
+        .list-unstyled > li > a{
+            color: var(--color-azul);
+        }
+
     </style>
 </head>
 
@@ -271,34 +338,32 @@
                     <div class="cover-img-2 w-40 position-absolute r-0 h-100"></div>
                     <img src="/images/home/niños-estudiando.jpg" alt="Niños estudiando" class="w-40 img-degradado">
                 </div>
-                <div class="p-4 pt-6 w-60">
+                <div class="ms-4 p-4 pt-6 w-60">
                     <h1 class="enc-2">Donde la Educación se Encuentra con la Diversión</h1>
 
-                    <p class="mt-4 fw-semibold">Bienvenido a Aprendiendo Jugando, donde la educación se encuentra con la
+                    <p class="mt-4 pe-4 fw-semibold fs-5">Bienvenido a Play Education, donde la educación se encuentra con la
                         diversión.
                         Ofrecemos juegos educativos interactivos diseñados para inspirar la curiosidad y el amor por el
                         aprendizaje en los niños.</p>
-                    <p class="fw-semibold ">Desde emocionantes desafíos matemáticos hasta fascinantes juegos de lógica,
-                        nuestra plataforma está diseñada para estimular la mente de los más pequeños mientras se
-                        divierten.</p>
+
                 </div>
             </div>
 
             {{-- Categorias de juegos --}}
-            <div class="col mt-2 p-2">
-                <div class="px-4 pb-0 enc-3">
+            <div class="col mt-6 p-2">
+                <div class="px-4 pb-4 enc-3">
                     <h1 class="title-3">Categorías de juegos</h1>
                 </div>
                 <div class="container w-100 text-center">
                     <div class="row row-cols-5 justify-content-center d-flex align-items-stretch">
+
                         <div class="col">
                             <div class="card mt-4">
                                 <img src="/images/home/niños-estudiando.jpg" class="card-img-top"
                                     alt="Imagen de Matemáticas">
                                 <div class="card-body">
                                     <h5 class="card-title">Matemáticas</h5>
-                                    <p class="card-text">Descubre juegos matemáticos divertidos para niños. Aprende
-                                        sumas, restas y más de manera interactiva.</p>
+                                    <p class="card-text">Sumas, restas y más. ¡Aprende jugando con nuestros juegos!</p>
                                     <a href="#" class="btn btn-primary btn-mat">Entrar</a>
                                 </div>
                             </div>
@@ -310,8 +375,7 @@
                                     alt="Imagen de Literatura">
                                 <div class="card-body">
                                     <h5 class="card-title">Literatura</h5>
-                                    <p class="card-text">Explora juegos educativos que fomentan el dominio del
-                                        vocabulario, gramática y más de manera divertida.</p>
+                                    <p class="card-text">Domina vocabulario y gramática con nuestros divertidos juegos.</p>
                                     <a href="#" class="btn btn-primary btn-lit">Entrar</a>
                                 </div>
                             </div>
@@ -323,9 +387,7 @@
                                     alt="Imagen de Ciencias Sociales">
                                 <div class="card-body">
                                     <h5 class="card-title">Ciencias Sociales</h5>
-                                    <p class="card-text">Viaja por el mundo explorando la geografía e historia con
-                                        juegos
-                                        educativos fascinantes.</p>
+                                    <p class="card-text">Explora geografía e historia con juegos fascinantes.</p>
                                     <a href="#" class="btn btn-primary btn-soc">Entrar</a>
                                 </div>
                             </div>
@@ -337,8 +399,7 @@
                                     alt="Imagen de Ciencias Naturales">
                                 <div class="card-body">
                                     <h5 class="card-title">Ciencias Naturales</h5>
-                                    <p class="card-text">Explora el mundo natural con juegos educativos. Biología,
-                                        ecología y más para despertar la curiosidad.</p>
+                                    <p class="card-text">Descubre biología, ecología y más en nuestros juegos.</p>
                                     <a href="#" class="btn btn-primary btn-nat">Entrar</a>
                                 </div>
                             </div>
@@ -351,7 +412,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Lógica</h5>
                                     <p class="card-text">Desarrolla habilidades lógicas con acertijos y rompecabezas.
-                                        Estimula la mente de los jugadores jóvenes.</p>
+                                    </p>
                                     <a href="#" class="btn btn-primary btn-log">Entrar</a>
                                 </div>
                             </div>
@@ -359,19 +420,138 @@
 
                     </div>
                 </div>
+
             </div>
 
             {{-- Acerca de nosotros --}}
             <div class="col p-0">
-                <!-- Contenedor con texto a la izquierda e imagen a la derecha -->
-                <div class="p-4 pt-6 w-60">
+
+                <div class="px-6 pt-6">
                     <h1 class="enc-2">Sobre Nosotros</h1>
-                    <p class="mt-4 fw-semibold">Bienvenido a Aprendiendo Jugando, donde la educación se encuentra con la diversión. Ofrecemos juegos educativos interactivos diseñados para inspirar la curiosidad y el amor por el aprendizaje en los niños.</p>
-                    <p class="fw-semibold ">Desde emocionantes desafíos matemáticos hasta fascinantes juegos de lógica, nuestra plataforma está diseñada para estimular la mente de los más pequeños mientras se divierten.</p>
+                    <div class="d-flex flex-column">
+                        <div class="row my-4 cont-about-1">
+                            <div class="col-6 py-4 px-8">
+                                <h2 class="mt-4 color-turquesa">Educación Interactiva</h2>
+                                <p class="fw-semibold fs-5">En Play Education, nos esforzamos por ofrecer una
+                                    experiencia
+                                    educativa
+                                    interactiva y envolvente para niños en edad preescolar y primer grado. Creemos que
+                                    el
+                                    aprendizaje es más efectivo cuando es divertido y emocionante.</p>
+                            </div>
+                            <div class="col-6 p-0">
+                                <div class="cont-img-about">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row my-4 align-self-end cont-about-2">
+                            <div class="col-6 p-0">
+                                <div class="cont-img-about"></div>
+                            </div>
+                            <div class="col-6 py-4 px-8">
+                                <h2 class="mt-4 color-naranja">Variedad de Juegos Educativos</h2>
+                                <p class="fw-semibold fs-5">Explora nuestra amplia variedad de juegos educativos diseñados
+                                    para
+                                    abordar
+                                    diversas áreas temáticas. Desde matemáticas y lenguaje hasta ciencias sociales y
+                                    naturales,
+                                    cada
+                                    juego tiene un propósito educativo específico y está adaptado a las necesidades de
+                                    los
+                                    niños
+                                    en
+                                    su proceso de aprendizaje.</p>
+                            </div>
+                        </div>
+
+                        <div class="row my-4 cont-about-3">
+                            <div class="col-6 py-4 px-8">
+                                <h2 class="mt-4 title-3">Seguimiento del Progreso</h2>
+                                <p class="fw-semibold fs-5">Los maestros y los padres pueden realizar un seguimiento
+                                    del
+                                    progreso de
+                                    los
+                                    estudiantes a través de nuestra plataforma. Ofrecemos herramientas
+                                    intuitivas
+                                    que
+                                    permiten
+                                    evaluar el rendimiento de los niños, identificar áreas de mejora y celebrar
+                                    los
+                                    logros
+                                    educativos.</p>
+                            </div>
+                            <div class="col-6 p-0">
+                                <div class="cont-img-about">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
+
+    {{-- footer --}}
+
+    <footer class="footer py-4">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-lg-between">
+                <div class="d-flex align-items-center justify-content-between">
+                    <a href="/" class="color-azul fs-5 font-weight-bold mb-0 ">Play Education</a>
+                    <ul class="list-unstyled d-flex flex-row mb-0">
+                        <li class="me-3">
+                            <a class="" href="#">Inicio</a>
+                        </li>
+                        <li class="me-3">
+                            <a class="" href="#">Juegos</a>
+                        </li>
+                        <li class="me-3">
+                            <a class="" href="#">Categorias</a>
+                        </li>
+                        <li class="me-3">
+                            <a class="" href="#">Sobre nosotros</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <hr class="my-4 color-azul">
+            <div class="row align-items-center justify-content-md-between">
+                <div class="col-md-6">
+                    <p class="text-sm color-azul font-weight-bold mb-0">© 2023 Play Education
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="list-unstyled d-flex flex-row justify-content-center justify-content-lg-end mb-0">
+                        <li class="me-3">
+                            <a class="" href="#">
+                                <i class="fab fa-facebook-f font-size-md mr-2"></i>
+                            </a>
+                        </li>
+                        <li class="me-3">
+                            <a class="" href="#">
+                                <i class="fab fa-twitter font-size-md mr-2"></i>
+                            </a>
+                        </li>
+                        <li class="me-3">
+                            <a class="" href="#">
+                                <i class="fab fa-instagram font-size-md mr-2"></i>
+                            </a>
+                        </li>
+                        <li class="me-3">
+                            <a class="" href="#">
+                                <i class="fab fa-pinterest font-size-md mr-2"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 
 </body>
 
