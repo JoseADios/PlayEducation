@@ -3,7 +3,7 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="align-items-center d-flex m-0 navbar-brand text-wrap" href="{{ route('dashboard') }}">
+        <a class="align-items-center d-flex m-0 navbar-brand text-wrap" href="/">
             <img src="../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="...">
             <span class="ms-3 font-weight-bold">Play Education</span>
         </a>
@@ -90,9 +90,9 @@
                 <a class="nav-link {{ Route::currentRouteName() == 'estudiantes' ? 'active' : '' }}"
                     href="{{ route('estudiantes') }}">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-info text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center
-                        {{ in_array(request()->route()->getName(),['estudiantes']) ? 'text-white' : 'text-dark' }}"></i>
+                        {{ in_array(request()->route()->getName(),['estudiantes']) ? 'text-white' : 'text-white' }}"></i>
                     </div>
 
                     <span class="nav-link-text ms-1">Estudiantes</span>
@@ -105,9 +105,9 @@
                 <a class="nav-link {{ Route::currentRouteName() == 'grupos' ? 'active' : '' }}"
                     href="{{ route('grupos') }}">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-success text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center
-                        {{ in_array(request()->route()->getName(),['grupos']) ? 'text-white' : 'text-dark' }}"></i>
+                        {{ in_array(request()->route()->getName(),['grupos']) ? 'text-white' : 'text-white' }}"></i>
                     </div>
 
                     <span class="nav-link-text ms-1">Grupos</span>

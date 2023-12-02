@@ -5,7 +5,7 @@
         --color-rojo: #f73861;
         --color-turquesa: #0ec7a7;
         --color-verde: #87c92b;
-        --color-morado: #87c92b;
+        --color-morado: #ac26c3;
         --color-naranja: #fb6f1a;
     }
 
