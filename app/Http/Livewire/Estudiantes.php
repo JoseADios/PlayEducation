@@ -15,6 +15,7 @@ class Estudiantes extends Component
 
     public $modalCrearEst = false;
     public $modalEditarEst = false;
+    public $modalEliminarEst = false;
 
     public $docente;
 
@@ -31,7 +32,7 @@ class Estudiantes extends Component
 
     public function crearEst()
     {
-        $this->clearMdlCrearEst();
+        $this->clearData();
         $this->abrirMdlCrearEst();
     }
 
@@ -45,10 +46,10 @@ class Estudiantes extends Component
     public function cerrarMdlCrearEst()
     {
         $this->modalCrearEst = false;
-        $this->clearMdlCrearEst();
+        $this->clearData();
     }
 
-    public function clearMdlCrearEst()
+    public function clearData()
     {
         $this->estudiante_id = '';
         $this->grupo_id = '';
@@ -88,7 +89,7 @@ class Estudiantes extends Component
             $this->estudiante_id ? 'Estudiante actualizado exitosamente' : 'Estudiante creado exitosamente'
         );
 
-        $this->clearMdlCrearEst();
+        $this->clearData();
         $this->cerrarMdlCrearEst();
         $this->cerrarMdlEditarEst();
 
@@ -124,18 +125,31 @@ class Estudiantes extends Component
     public function cerrarMdlEditarEst()
     {
         $this->modalEditarEst = false;
-        $this->clearMdlCrearEst();
+        $this->clearData();
     }
 
     // Eliminar Estudiante
 
-    public function eliminarEst($id)
+    public function abrirMdlEliminarEst($id_est)
+    {
+        $this->estudiante_id = $id_est;
+        $this->modalEliminarEst = true;
+    }
+
+    public function cerrarMdlEliminarEst()
+    {
+        $this->estudiante_id = '';
+        $this->modalEliminarEst = false;
+    }
+
+    public function eliminarEst()
     {
         // Estudiante::find($id)->delete();
-        Estudiante::find($id)->update(['activo' => 0]);
+        Estudiante::find($this->estudiante_id)->update(['activo' => 0]);
         session()->flash('message', 'Estudiante eliminado exitosamente');
 
-        $this->emit('estudianteEliminado');
+        $this->cerrarMdlEliminarEst();
+        $this->cerrarMdlEditarEst();
         $this->mount();
     }
 
