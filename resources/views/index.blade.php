@@ -131,7 +131,7 @@
 
         .cover-img-2 {
             background: rgb(255, 255, 255);
-            background: linear-gradient(90deg, #f5f6f8 0%, rgba(130, 185, 255, 0) 25%, rgba(8, 86, 186, 0) 100%);
+            background: linear-gradient(90deg, #f5f6f8 0%, #f5f6f8 5%, #0856ba00 100%);
         }
 
         .enc-2 {
@@ -218,11 +218,15 @@
         }
 
         .cont-img-about {
-            background-image: url('/images/home/niños-estudiando.jpg');
             background-size: cover;
             background-position: center;
             width: 100%;
             height: 100%;
+        }
+
+        .cont-img-interactiva{
+            background-image: url('/images/home/educacion-interactiva.jpg');
+
         }
 
         .color-azul {
@@ -253,7 +257,6 @@
             color: var(--color-naranja);
         }
 
-
         .card:hover {
             box-shadow: 0 0 11px rgba(33, 33, 33, .2);
         }
@@ -281,6 +284,62 @@
 
         .list-unstyled > li > a{
             color: var(--color-azul);
+        }
+
+        .cont-img-breve-desc{
+            background-image: url('/images/home/niña-con-movil.avif');
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cont-img-mat{
+            background-image: url('/images/home/juegos-matematicas.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 10rem;
+        }
+
+        .cont-img-lit{
+            background-image: url('/images/home/juegos-literatura.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 10rem;
+        }
+
+        .cont-img-soc{
+            background-image: url('/images/home/juegos-sociales.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 10rem;
+        }
+
+        .cont-img-nat{
+            background-image: url('/images/home/juegos-naturales.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 10rem;
+        }
+
+        .cont-img-log{
+            background-image: url('/images/home/juegos-logica.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 10rem;
+        }
+
+        .cont-variedad-juegos{
+            background-image: url('/images/home/variedad-juegos.jpeg');
+        }
+
+        .cont-seguimiento{
+            background-image: url('/images/home/graficos.jpg');
         }
 
     </style>
@@ -332,13 +391,9 @@
             </div>
 
             {{-- Breve descripcion --}}
-            <div class="col p-0" id="breve-descripcion">
+            <div class="row p-0" id="breve-descripcion">
                 {{-- contenedor que tenga texto a la izquierda y una imagen a la derecha bootstrap --}}
-                <div class="cont-img2 position-absolute d-flex justify-content-end">
-                    <div class="cover-img-2 w-40 position-absolute r-0 h-100"></div>
-                    <img src="/images/home/niños-estudiando.jpg" alt="Niños estudiando" class="w-40 img-degradado">
-                </div>
-                <div class="ms-4 p-4 pt-6 w-60">
+                <div class="col ms-4 p-4 pt-6 w-60">
                     <h1 class="enc-2">Donde la Educación se Encuentra con la Diversión</h1>
 
                     <p class="mt-4 pe-4 fw-semibold fs-5">Bienvenido a Play Education, donde la educación se encuentra con la
@@ -346,6 +401,10 @@
                         Ofrecemos juegos educativos interactivos diseñados para inspirar la curiosidad y el amor por el
                         aprendizaje en los niños.</p>
 
+                </div>
+                <div class="cont-img2 col d-flex justify-content-end position-relative">
+                    <div class="cont-img-breve-desc"></div>
+                    <div class="cover-img-2 position-absolute w-100 h-100"></div>
                 </div>
             </div>
 
@@ -359,8 +418,10 @@
 
                         <div class="col">
                             <div class="card mt-4">
-                                <img src="/images/home/niños-estudiando.jpg" class="card-img-top"
-                                    alt="Imagen de Matemáticas">
+                                <div class="card-img-top cont-img-mat">
+                                </div>
+                                {{-- <img src="/images/home/juegos-matematicas.jpg" class="card-img-top"
+                                    alt="Imagen de Matemáticas"> --}}
                                 <div class="card-body">
                                     <h5 class="card-title">Matemáticas</h5>
                                     <p class="card-text">Sumas, restas y más. ¡Aprende jugando con nuestros juegos!</p>
@@ -371,8 +432,8 @@
 
                         <div class="col">
                             <div class="card mt-4">
-                                <img src="/images/home/niños-estudiando.jpg" class="card-img-top"
-                                    alt="Imagen de Literatura">
+                                <div class="card-img-top cont-img-lit">
+                                </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Literatura</h5>
                                     <p class="card-text">Domina vocabulario y gramática con nuestros divertidos juegos.</p>
@@ -383,8 +444,8 @@
 
                         <div class="col">
                             <div class="card mt-4">
-                                <img src="/images/home/niños-estudiando.jpg" class="card-img-top"
-                                    alt="Imagen de Ciencias Sociales">
+                                <div class="card-img-top cont-img-soc">
+                                </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Ciencias Sociales</h5>
                                     <p class="card-text">Explora geografía e historia con juegos fascinantes.</p>
@@ -395,8 +456,8 @@
 
                         <div class="col">
                             <div class="card mt-4">
-                                <img src="/images/home/niños-estudiando.jpg" class="card-img-top"
-                                    alt="Imagen de Ciencias Naturales">
+                                <div class="card-img-top cont-img-nat">
+                                </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Ciencias Naturales</h5>
                                     <p class="card-text">Descubre biología, ecología y más en nuestros juegos.</p>
@@ -407,8 +468,8 @@
 
                         <div class="col">
                             <div class="card mt-4">
-                                <img src="/images/home/niños-estudiando.jpg" class="card-img-top"
-                                    alt="Imagen de Lógica">
+                                <div class="card-img-top cont-img-log">
+                                </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Lógica</h5>
                                     <p class="card-text">Desarrolla habilidades lógicas con acertijos y rompecabezas.
@@ -440,14 +501,14 @@
                                     aprendizaje es más efectivo cuando es divertido y emocionante.</p>
                             </div>
                             <div class="col-6 p-0">
-                                <div class="cont-img-about">
+                                <div class="cont-img-about cont-img-interactiva">
                                 </div>
                             </div>
                         </div>
 
                         <div class="row my-4 align-self-end cont-about-2">
                             <div class="col-6 p-0">
-                                <div class="cont-img-about"></div>
+                                <div class="cont-img-about cont-variedad-juegos"></div>
                             </div>
                             <div class="col-6 py-4 px-8">
                                 <h2 class="mt-4 color-naranja">Variedad de Juegos Educativos</h2>
@@ -482,7 +543,7 @@
                                     educativos.</p>
                             </div>
                             <div class="col-6 p-0">
-                                <div class="cont-img-about">
+                                <div class="cont-img-about cont-seguimiento">
                                 </div>
                             </div>
 
