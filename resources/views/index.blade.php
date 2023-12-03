@@ -297,16 +297,16 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Juegos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categorias</a>
+                        <a class="nav-link" href="#categorias-juegos">Categorias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre nosotros</a>
+                        <a class="nav-link" href="#about-us">Sobre nosotros</a>
                     </li>
                 </ul>
             </div>
@@ -332,7 +332,7 @@
             </div>
 
             {{-- Breve descripcion --}}
-            <div class="col p-0">
+            <div class="col p-0" id="breve-descripcion">
                 {{-- contenedor que tenga texto a la izquierda y una imagen a la derecha bootstrap --}}
                 <div class="cont-img2 position-absolute d-flex justify-content-end">
                     <div class="cover-img-2 w-40 position-absolute r-0 h-100"></div>
@@ -352,7 +352,7 @@
             {{-- Categorias de juegos --}}
             <div class="col mt-6 p-2">
                 <div class="px-4 pb-4 enc-3">
-                    <h1 class="title-3">Categorías de juegos</h1>
+                    <h1 class="title-3" id="categorias-juegos">Categorías de juegos</h1>
                 </div>
                 <div class="container w-100 text-center">
                     <div class="row row-cols-5 justify-content-center d-flex align-items-stretch">
@@ -427,7 +427,7 @@
             <div class="col p-0">
 
                 <div class="px-6 pt-6">
-                    <h1 class="enc-2">Sobre Nosotros</h1>
+                    <h1 class="enc-2" id="about-us">Sobre Nosotros</h1>
                     <div class="d-flex flex-column">
                         <div class="row my-4 cont-about-1">
                             <div class="col-6 py-4 px-8">
@@ -503,16 +503,16 @@
                     <a href="/" class="color-azul fs-5 font-weight-bold mb-0 ">Play Education</a>
                     <ul class="list-unstyled d-flex flex-row mb-0">
                         <li class="me-3">
-                            <a class="" href="#">Inicio</a>
+                            <a class="" href="/">Inicio</a>
                         </li>
                         <li class="me-3">
                             <a class="" href="#">Juegos</a>
                         </li>
                         <li class="me-3">
-                            <a class="" href="#">Categorias</a>
+                            <a class="" href="#categorias-juegos">Categorias</a>
                         </li>
                         <li class="me-3">
-                            <a class="" href="#">Sobre nosotros</a>
+                            <a class="" href="#about-us">Sobre nosotros</a>
                         </li>
                     </ul>
                 </div>
