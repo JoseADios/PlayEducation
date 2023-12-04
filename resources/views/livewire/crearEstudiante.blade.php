@@ -97,8 +97,8 @@
                 </form>
             </div>
             <div class="d-flex justify-content-between align-items-center">
-                <button type="button" wire:click="cerrarMdlCrearEst()" class="btn btn-sec mb-0">Close</button>
-                <button type="button" wire:click="guardarEst()" class="btn btn-prim mb-0">Save changes</button>
+                <button type="button" wire:click="cerrarMdlCrearEst()" class="btn btn-sec mb-0">Cerrar</button>
+                <button type="button" wire:click="guardarEst()" class="btn btn-prim mb-0">Guardar</button>
             </div>
         </div>
     </div>

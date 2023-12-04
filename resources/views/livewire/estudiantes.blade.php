@@ -7,6 +7,9 @@
             @if ($modalEditarEst)
                 @include('livewire.actualizarEstudiante')
             @endif
+            @if ($modalEliminarEst)
+                @include('livewire.eliminarEstudiante')
+            @endif
         </div>
     </div>
     <div class="row">
@@ -84,10 +87,14 @@
                                                 <p class="text-xs font-weight-bold mb-0">{{ $estudiante->id }}</p>
                                             </td>
                                             <td class="text-center">
-                                                <p class="text-xs font-weight-bold mb-0">{{ $estudiante->nombre }}</p>
+                                                <p class="text-xs font-weight-bold mb-0 custom-cursor"
+                                                    wire:click="editarEst({{ $estudiante->id }})">
+                                                    {{ $estudiante->nombre }}</p>
                                             </td>
                                             <td class="text-center">
-                                                <p class="text-xs font-weight-bold mb-0">{{ $estudiante->apellido }}</p>
+                                                <p class="text-xs font-weight-bold mb-0 custom-cursor"
+                                                    wire:click="editarEst({{ $estudiante->id }})">
+                                                    {{ $estudiante->apellido }}</p>
                                             </td>
                                             <td class="text-center">
                                                 <p class="text-xs font-weight-bold mb-0">{{ $estudiante->usuario }}</p>
@@ -101,7 +108,7 @@
                                                     data-bs-toggle="tooltip" data-bs-original-title="Edit user">
                                                     <i class="fas fa-user-edit text-secondary"></i>
                                                 </a>
-                                                <span data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <span data-bs-toggle="modal" wire:click="abrirMdlEliminarEst({{ $estudiante->id }})">
                                                     <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                                 </span>
                                             </td>
@@ -139,5 +146,10 @@
     .btn-morado:hover {
         background-color: #ac26c3;
         color: white;
+    }
+
+    .custom-cursor:hover {
+        color: #ac26c3;
+        cursor: pointer;
     }
 </style>
