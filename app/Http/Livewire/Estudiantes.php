@@ -17,6 +17,8 @@ class Estudiantes extends Component
     public $modalEditarEst = false;
     public $modalEliminarEst = false;
 
+    public $estActivos = true;
+
     public $docente;
 
     public function mount()
@@ -25,9 +27,21 @@ class Estudiantes extends Component
         $this->grupos = $this->docente->grupos;
     }
 
-    public function render()
+    public function verEstActivos()
     {
-        return view('livewire.estudiantes');
+        $this->estActivos = true;
+    }
+
+    public function verEstInactivos()
+    {
+        $this->estActivos = false;
+    }
+
+    public function activarEst($id)
+    {
+        Estudiante::find($id)->update(['activo' => 1]);
+        session()->flash('message', 'Estudiante activado exitosamente');
+        $this->mount();
     }
 
     public function crearEst()
@@ -188,6 +202,11 @@ class Estudiantes extends Component
 
         $this->clearObservaciones();
 
+    }
+
+    public function render()
+    {
+        return view('livewire.estudiantes');
     }
 
 }
