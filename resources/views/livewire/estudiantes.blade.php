@@ -21,6 +21,45 @@
             @endif
         </div>
     </div>
+    <div class="row px-4">
+        <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+            <div class="nav-wrapper position-relative end-0">
+                <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
+                    {{-- <li class="nav-item">
+                        <a wire:click="verEstActivos()" class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab"
+                            href="javascript:;" role="tab" aria-controls="activos" aria-selected="true">
+                            <i class="fas fa-check"></i>
+                            <span class="ms-1">{{ __('Activos') }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a wire:click="verEstInactivos()" class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab"
+                            href="javascript:;" role="tab" aria-controls="eliminados" aria-selected="false">
+                            <i class="fas fa-trash"></i>
+                            <span class="ms-1">{{ __('Eliminados') }}</span>
+                        </a>
+                    </li> --}}
+                    <li class="nav-item cont-radio w-50">
+                        <input class="radio-btn" checked type="radio" name="filtro" id="activos"
+                            wire:click="verEstActivos()">
+                        <label for="activos" class="label-radio ms-1 text-dark py-2 px-3">
+                            <i class="fas fa-check me-1"></i>
+
+                            Activos</label>
+                    </li>
+                    <li class="nav-item cont-radio w-50">
+                        <input class="radio-btn" type="radio" name="filtro" id="inactivos"
+                            wire:click="verEstInactivos()">
+                        <label for="inactivos" class="label-radio ms-1 text-dark py-2 px-3">
+                            <i class="fas fa-trash me-1"></i>
+
+                            Eliminados</label>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card my-4 mx-4 pb-4 head-ests">
@@ -79,7 +118,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($grupo->estudiantes as $estudiante)
-                                        @if ($estudiante->activo == 0)
+                                        @if ($estudiante->activo == !$estActivos)
                                             @continue
                                         @endif
                                         <tr>
@@ -103,15 +142,24 @@
                                                 <span
                                                     class="text-secondary text-xs font-weight-bold">{{ $estudiante->created_at ? $estudiante->created_at->format('j M Y, g:i a') : 'N/A' }}</span>
                                             </td>
-                                            <td class="text-center">
-                                                <a wire:click="editarEst({{ $estudiante->id }})" class="mx-3"
-                                                    data-bs-toggle="tooltip" data-bs-original-title="Edit user">
-                                                    <i class="fas fa-user-edit text-secondary"></i>
-                                                </a>
-                                                <span data-bs-toggle="modal" wire:click="abrirMdlEliminarEst({{ $estudiante->id }})">
-                                                    <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                                </span>
-                                            </td>
+                                            @if ($estudiante->activo == 1)
+                                                <td class="text-center">
+                                                    <a wire:click="editarEst({{ $estudiante->id }})" class="mx-3"
+                                                        data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                                        <i class="fas fa-user-edit text-secondary"></i>
+                                                    </a>
+                                                    <span wire:click="abrirMdlEliminarEst({{ $estudiante->id }})">
+                                                        <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                                    </span>
+                                                </td>
+                                            @else
+                                                <td class="text-center">
+                                                    <span wire:click="activarEst({{ $estudiante->id }})">
+                                                        <i class="cursor-pointer fas fa-undo text-secondary"></i>
+                                                    </span>
+                                                </td>
+                                            @endif
+
                                         </tr>
                                     @endforeach
                                     @if ($grupo->estudiantes->isEmpty())
@@ -151,5 +199,20 @@
     .custom-cursor:hover {
         color: #ac26c3;
         cursor: pointer;
+    }
+
+    .radio-btn {
+        display: none;
+    }
+
+    /* si el radio btn esta activado se cambia el fondo del elemento padre */
+    .radio-btn:checked+label {
+        background-color: white;
+        box-shadow: 0px 0px 10px 0px #1e1ab747;
+        border-radius: .5rem;
+    }
+    .label-radio{
+        width: 100%;
+        transition: background-color 0.4s ease, box-shadow 0.4s ease;
     }
 </style>
