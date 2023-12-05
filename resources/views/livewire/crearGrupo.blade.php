@@ -42,10 +42,16 @@
                 </div>
 
                 <!-- Nuevo campo: Contraseña Temporal -->
+
                 <div class="mb-3">
                     <label for="password_temp" class="col-form-label">Contraseña Temporal:</label>
+                    @if ($errors->has('password_temp'))
+                    <div class="alert alert-warning">
+                        {{ $errors->first('password_temp') }}
+                    </div>
+                @endif
                     <div class="input-group">
-                        <input type="password" class="form-control" id="password_temp" wire:model="password_temp">
+                        <input type="{{ $showPassword ? 'text' : 'password' }}" class="form-control" id="password_temp" wire:model="password_temp">
                         <button type="button" class="btn btn-outline-secondary" wire:click="togglePasswordVisibility">
                             <!-- Icono de ojo -->
                             @if ($showPassword)

@@ -72,9 +72,25 @@
                                         <td class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">{{ auth()->user()->name }} {{ auth()->user()->last_name }}</p>
                                         </td>
-                                        <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">{{ $grupo->password_temp }}</p>
+
+                                        <td class="text-center position-relative">
+                                            <div class="d-flex align-items-center justify-content-center" style="margin-right: 5px; margin-top: 5px;">
+                                                <p class="text-xs font-weight-bold mb-0 text-break" style="color: {{ isset($visiblePasswords[$grupo->id]) && $visiblePasswords[$grupo->id] ? 'black' : 'black' }};">
+                                                    @if (isset($visiblePasswords[$grupo->id]) && $visiblePasswords[$grupo->id])
+                                                        {{ $grupo->password_temp }}
+                                                    @else
+                                                        &#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226; <!-- Utilizando puntos estilizados -->
+                                                    @endif
+                                                </p>
+
+                                                <span wire:click="togglePassword({{ $grupo->id }})"
+                                                    data-bs-toggle="tooltip" data-bs-original-title="{{ isset($visiblePasswords[$grupo->id]) && $visiblePasswords[$grupo->id] ? 'Ocultar' : 'Mostrar' }} Contraseña"
+                                                    style="margin-left: 10px; margin-top: 3px;">
+                                                    <i class="cursor-pointer fas {{ isset($visiblePasswords[$grupo->id]) && $visiblePasswords[$grupo->id] ? 'fa-eye' : 'fa-eye-slash' }} {{ isset($visiblePasswords[$grupo->id]) && $visiblePasswords[$grupo->id] ? 'text-green' : '' }}"></i>
+                                                </span>
+                                            </div>
                                         </td>
+
                                         <td class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">{{ $grupo->fecha_expiracion }}</p>
                                         </td>

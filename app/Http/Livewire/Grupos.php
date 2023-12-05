@@ -7,8 +7,10 @@ use App\Models\Grupo;
 
 class Grupos extends Component
 {
-    public $grupos, $docente_id, $nombre, $grupo_id, $password_temp, $fecha_expiracion, $descripcion;
-    public $modal = false; 
+    public $grupos, $docente_id, $nombre, $grupo_id,
+    $password_temp, $fecha_expiracion, $descripcion, $visiblePasswords;
+    public $showPassword = false;
+    public $modal = false;
 
     public function crearGrupo()
     {
@@ -34,12 +36,30 @@ class Grupos extends Component
 
         $this->abrirModal();
     }
-    public $showPassword = false;
+
+    public function mount()
+    {
+
+        $this->grupos = Grupo::where('docente_id', auth()->user()->id)->get();
+        $this->initVisiblePasswords();
+    }
+
+    public function initVisiblePasswords()
+    {
+        foreach ($this->grupos as $grupo) {
+            $this->visiblePasswords[$grupo->id] = false;
+        }
+    }
 
     public function togglePasswordVisibility(){
 
         $this->showPassword = !$this->showPassword;
 
+    }
+
+    public function togglePassword($grupo_id)
+    {
+        $this->visiblePasswords[$grupo_id] = isset($this->visiblePasswords[$grupo_id]) ? !$this->visiblePasswords[$grupo_id] : true;
     }
 
     public function abrirModal()
