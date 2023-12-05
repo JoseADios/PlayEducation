@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use DB;
-use DB;
 use Livewire\Component;
 
 class Dashboard extends Component
@@ -14,7 +13,7 @@ class Dashboard extends Component
     public $grupo_id, $grupos;
 
     public $cantidadGrupos, $cantidadEstudiantes, $cantidadPuntuaciones, $cantidadLogros, $cantidadObservaciones;
-    public $avgCalificacionByMes;
+    public $avgCalificacionByMes, $tenMejoresEstudiantes, $actividadesRecientes;
     public $avgCalificacionByGrupo;
 
     public $prueba = true;
@@ -48,6 +47,8 @@ class Dashboard extends Component
         $this->obtenerCantidadLogros();
         $this->obtenerCantidadObservaciones();
         $this->obtenerCalsByMes();
+        $this->obtener10MejoresEstudiantes();
+        $this->obtenerActividadesRecientes();
     }
 
     public function obtenerSumGrupos()
@@ -151,6 +152,43 @@ class Dashboard extends Component
 
         $this->avgCalificacionByMes = json_encode($grupos);
 
+    }
+
+    public function obtener10MejoresEstudiantes()
+    {
+        $data = DB::table('users')
+            ->join('grupos', 'users.id', '=', 'grupos.docente_id')
+            ->join('estudiantes', 'grupos.id', '=', 'estudiantes.grupo_id')
+            ->join('puntuacions', 'estudiantes.id', '=', 'puntuacions.estudiante_id')
+            ->select('estudiantes.nombre', 'estudiantes.apellido', 'grupos.nombre as grupo',  DB::raw('ROUND(AVG(puntuacions.puntos), 2) as avg_calificacion'))
+            ->where('users.id', $this->docente->id)
+            ->where('grupos.activo', 1)
+            ->where('estudiantes.activo', 1)
+            ->groupBy('estudiantes.id')
+            ->orderBy('avg_calificacion', 'desc')
+            ->limit(5)
+            ->get();
+
+        $this->tenMejoresEstudiantes = $data;
+    }
+
+    // funcion para obtener una lista de las actividades recientes
+    public function obtenerActividadesRecientes()
+    {
+        $data = DB::table('users')
+            ->join('grupos', 'users.id', '=', 'grupos.docente_id')
+            ->join('estudiantes', 'grupos.id', '=', 'estudiantes.grupo_id')
+            ->join('puntuacions', 'estudiantes.id', '=', 'puntuacions.estudiante_id')
+            ->join('juegos', 'puntuacions.juego_id', '=', 'juegos.id')
+            ->select('estudiantes.nombre', 'juegos.nombre as juego', 'estudiantes.apellido', 'puntuacions.puntos', 'puntuacions.created_at')
+            ->where('users.id', $this->docente->id)
+            ->where('grupos.activo', 1)
+            ->where('estudiantes.activo', 1)
+            ->orderBy('puntuacions.created_at', 'desc')
+            ->limit(5)
+            ->get();
+
+        $this->actividadesRecientes = $data;
     }
 
     public function render()
