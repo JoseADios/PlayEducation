@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use DB;
+use DB;
 use Livewire\Component;
 
 class Dashboard extends Component
