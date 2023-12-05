@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('docente_id');
             $table->foreign('docente_id')->references('id')->on('users')->restrictOnDelete();
             $table->string('nombre')->unique();
+            $table->string('password_temp')->default();
+            $table->timestamp('fecha_expiracion')->unique();
             $table->string('descripcion')->nullable();
             $table->boolean('activo')->default(true);
             $table->timestamps();
