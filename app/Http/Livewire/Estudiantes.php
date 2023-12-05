@@ -2,9 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Controllers\ObservacionController;
 use App\Models\Estudiante;
-use App\Models\Observacion;
 use Livewire\Component;
 
 class Estudiantes extends Component
@@ -24,7 +22,7 @@ class Estudiantes extends Component
     public function mount()
     {
         $this->docente = auth()->user();
-        $this->grupos = $this->docente->grupos;
+        $this->grupos = $this->docente->grupos->where('activo', 1);
     }
 
     public function verEstActivos()

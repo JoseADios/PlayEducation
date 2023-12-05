@@ -411,7 +411,7 @@
             {{-- Categorias de juegos --}}
             <div class="col mt-6 p-2">
                 <div class="px-4 pb-4 enc-3">
-                    <h1 class="title-3" id="categorias-juegos">Categorías de juegos</h1>
+                    <h1 class="title-3" id="categorias-juegos">Categorías</h1>
                 </div>
                 <div class="container w-100 text-center">
                     <div class="row row-cols-5 justify-content-center d-flex align-items-stretch">

@@ -25,20 +25,6 @@
         <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
             <div class="nav-wrapper position-relative end-0">
                 <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
-                    {{-- <li class="nav-item">
-                        <a wire:click="verEstActivos()" class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab"
-                            href="javascript:;" role="tab" aria-controls="activos" aria-selected="true">
-                            <i class="fas fa-check"></i>
-                            <span class="ms-1">{{ __('Activos') }}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a wire:click="verEstInactivos()" class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab"
-                            href="javascript:;" role="tab" aria-controls="eliminados" aria-selected="false">
-                            <i class="fas fa-trash"></i>
-                            <span class="ms-1">{{ __('Eliminados') }}</span>
-                        </a>
-                    </li> --}}
                     <li class="nav-item cont-radio w-50">
                         <input class="radio-btn" checked type="radio" name="filtro" id="activos"
                             wire:click="verEstActivos()">
@@ -145,18 +131,20 @@
                                             @if ($estudiante->activo == 1)
                                                 <td class="text-center">
                                                     <a wire:click="editarEst({{ $estudiante->id }})" class="mx-3"
-                                                        data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                                        data-bs-toggle="tooltip" data-bs-original-title="Editar">
                                                         <i class="fas fa-user-edit text-secondary"></i>
                                                     </a>
-                                                    <span wire:click="abrirMdlEliminarEst({{ $estudiante->id }})">
+                                                    <a wire:click="abrirMdlEliminarEst({{ $estudiante->id }})"
+                                                        data-bs-toggle="tooltip" data-bs-original-title="Eliminar">
                                                         <i class="cursor-pointer fas fa-trash text-secondary"></i>
-                                                    </span>
+                                                    </a>
                                                 </td>
                                             @else
                                                 <td class="text-center">
-                                                    <span wire:click="activarEst({{ $estudiante->id }})">
+                                                    <a wire:click="activarEst({{ $estudiante->id }})"
+                                                        data-bs-toggle="tooltip" data-bs-original-title="Eliminar">
                                                         <i class="cursor-pointer fas fa-undo text-secondary"></i>
-                                                    </span>
+                                                    </a>
                                                 </td>
                                             @endif
 
@@ -211,7 +199,8 @@
         box-shadow: 0px 0px 10px 0px #1e1ab747;
         border-radius: .5rem;
     }
-    .label-radio{
+
+    .label-radio {
         width: 100%;
         transition: background-color 0.4s ease, box-shadow 0.4s ease;
     }

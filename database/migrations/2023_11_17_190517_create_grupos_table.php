@@ -20,7 +20,6 @@ return new class extends Migration
             $table->timestamp('fecha_expiracion')->unique();
             $table->string('descripcion')->nullable();
             $table->boolean('activo')->default(true);
-
             $table->timestamps();
         });
     }
