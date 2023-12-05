@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('docente_id')->references('id')->on('users')->restrictOnDelete();
             $table->string('nombre')->unique();
             $table->string('descripcion')->nullable();
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }
