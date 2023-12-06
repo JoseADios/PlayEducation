@@ -349,7 +349,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid my-2">
             <a class="navbar-brand d-flex align-items-center" href="/">
-                <img src="../assets/img/logo-ct.png" alt="Bootstrap" width="30" height="24">
+                <img src="../assets/img/logo-ct.png" alt="Bootstrap" width="70" height="70">
                 <h4 class="ps-3 play-edu mb-0">Play Education</h4>
             </a>
 

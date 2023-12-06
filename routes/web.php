@@ -63,6 +63,16 @@ Route::get('/animales/{any}', function ($any) {
     abort(404);
 })->where('any', '.*');
 
+Route::get('/TicTac/{any}', function ($any) {
+    $path = public_path('TicTac/' . $any);
+
+    if (File::exists($path)) {
+        return File::get($path);
+    }
+
+    abort(404);
+})->where('any', '.*');
+
 
 
 //Route::get('/app/sumar/index.html')->name('suma');

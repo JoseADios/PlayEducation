@@ -296,7 +296,7 @@
         }
 
         .cont-img-mat{
-            background-image: url('/images/home/juegos-matematicas.jpg');
+            background-image: url('/images/home/sumar.png');
             background-size: cover;
             background-position: center;
             width: 100%;
@@ -304,7 +304,7 @@
         }
 
         .cont-img-lit{
-            background-image: url('/images/home/juegos-literatura.jpg');
+            background-image: url('/images/home/animales.png');
             background-size: cover;
             background-position: center;
             width: 100%;
@@ -328,7 +328,7 @@
         }
 
         .cont-img-log{
-            background-image: url('/images/home/juegos-logica.jpg');
+            background-image: url('/images/home/tictac.png');
             background-size: cover;
             background-position: center;
             width: 100%;
@@ -350,7 +350,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid my-2">
             <a class="navbar-brand d-flex align-items-center" href="/">
-                <img src="../assets/img/logo-ct.png" alt="Bootstrap" width="30" height="24">
+                <img src="../assets/img/logo-ct.png" alt="Bootstrap" width="70" height="70">
                 <h4 class="ps-3 play-edu mb-0">Play Education</h4>
             </a>
 
@@ -366,7 +366,7 @@
             {{-- Categorias de juegos --}}
             <div class="col mt-6 p-2">
                 <div class="px-4 pb-4 enc-3">
-                    <h1 class="text-center title-3" id="categorias-juegos" >Categorías</h1>
+                    <h1 class="text-center title-3" id="categorias-juegos" >Todos Juegos</h1>
                 </div>
                 <div class="container w-100 text-center">
                     <div class="row row-cols-5 justify-content-center d-flex align-items-stretch">
@@ -379,8 +379,8 @@
                                     alt="Imagen de Matemáticas"> --}}
                                 <div class="card-body">
                                     <h5 class="card-title">Matemáticas</h5>
-                                    <p class="card-text">Sumas, restas y más. ¡Aprende jugando con nuestros juegos!</p>
-                                    <a href="/sumar" class="btn btn-primary btn-mat">Entrar</a>
+                                    <p class="card-text">Demuestra tus Habilidades al Sumar.</p>
+                                    <a href="/sumar" class="btn btn-primary btn-mat">Jugar</a>
                                 </div>
                             </div>
                         </div>
@@ -391,13 +391,13 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Literatura</h5>
-                                    <p class="card-text">Domina vocabulario y gramática con nuestros divertidos juegos.</p>
-                                    <a href="animales" class="btn btn-primary btn-lit">Entrar</a>
+                                    <p class="card-text">¿Podras Adivinar Que Animal Es?.</p>
+                                    <a href="animales" class="btn btn-primary btn-lit">Jugar</a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col">
+                        {{-- <div class="col">
                             <div class="card mt-4">
                                 <div class="card-img-top cont-img-soc">
                                 </div>
@@ -419,7 +419,7 @@
                                     <a href="#" class="btn btn-primary btn-nat">Entrar</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col">
                             <div class="card mt-4">
@@ -427,9 +427,9 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Lógica</h5>
-                                    <p class="card-text">Desarrolla habilidades lógicas con acertijos y rompecabezas.
+                                    <p class="card-text">Le Ganaras a "Dificil" 3 en Raya.
                                     </p>
-                                    <a href="#" class="btn btn-primary btn-log">Entrar</a>
+                                    <a href="/TicTac" class="btn btn-primary btn-log">Jugar</a>
                                 </div>
                             </div>
                         </div>
