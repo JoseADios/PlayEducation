@@ -62,28 +62,16 @@ Route::middleware('auth')->group(function () {
 
 
 // estudiantes
+Route::middleware(['web'])->group(function () {
 
-Route::get('/ruta-estudiante', function () {
-    return '¡Hola, estudiante!';
-})->middleware('auth:estudiante')->name('ruta-estudiante');
+    Route::get('/ruta-estudiante', function () {
+        return view('pagina-estudiantes');
+    })->middleware('auth:estudiante')->name('ruta-estudiante');
 
-Route::get('/login-estudiante', function () {
-    return view('livewire.login-estudiantes');
-})->name('login-estudiante');
+    Route::get('/login-estudiante', function () {
+        return view('livewire.login-estudiantes');
+    })->name('login-estudiante');
 
-Route::post('/login-estudiante', function (Request $request) {
-    $credentials = $request->only('usuario', 'password');
-
-    if (Auth::guard('estudiante')->attempt($credentials)) {
-        // Autenticación exitosa, redirige a la ruta de estudiantes
-        if (Auth::guard('estudiante')->check()) {
-            return redirect()->intended('ruta-estudiante');
-            dd('La sesión se inició correctamente');
-        } else {
-            dd('La sesión no se inició correctamente');
-        }
-    } else {
-        // Autenticación fallida, imprime un mensaje de error
-        dd('Las credenciales proporcionadas no son válidas.');
-    }
+    Route::post('/logout-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'logout'])->name('logout-estudiante');
+    Route::post('/login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'login']);
 });

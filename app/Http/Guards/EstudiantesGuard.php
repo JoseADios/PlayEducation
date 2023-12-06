@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Estudiante;
 use Illuminate\Http\Request;
 use App\Models\Grupo;
+use Illuminate\Contracts\Cookie\QueueingFactory as CookieJar;
 
 class EstudiantesGuard extends SessionGuard
 {
@@ -32,6 +33,14 @@ class EstudiantesGuard extends SessionGuard
      * @param bool $remember
      * @return bool
      */
+
+    protected $cookie;
+
+    public function setCookieJar(CookieJar $cookie)
+    {
+        $this->cookie = $cookie;
+    }
+
     public function attempt(array $credentials = [], $remember = false)
     {
         $estudiante = Estudiante::where('usuario', $credentials['usuario'])->first();
