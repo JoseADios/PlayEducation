@@ -99,18 +99,17 @@ class Grupos extends Component
     public function guardar()
     {
 
-
         $this->validate([
             'nombre' => 'required|unique:grupos,nombre,NULL,id,docente_id,' . auth()->user()->id,
             'password_temp' => 'required',
             'fecha_expiracion' => 'required|date',
-            'descripcion' => 'required',
+
         ], [
             'nombre.required' => 'ya existe este nombre.',
             'password_temp.required' => 'El campo Contraseña Temporal es obligatorio.',
             'fecha_expiracion.required' => 'El campo Fecha de Expiración es obligatorio.',
             'fecha_expiracion.date' => 'El campo Fecha de Expiración debe ser una fecha válida.',
-            'descripcion.required' => 'El campo Descripción es obligatorio.',
+            
         ]);
 
 

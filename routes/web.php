@@ -39,6 +39,10 @@ Route::get('/', function () {
     return view('index');
 })->name('/');
 
+Route::get('/juegos', function () {
+    return view('juegos');
+})->name('/');
+
 Route::get('/sumar/{any}', function ($any) {
     $path = public_path('sumar/' . $any);
 
@@ -48,6 +52,18 @@ Route::get('/sumar/{any}', function ($any) {
 
     abort(404);
 })->where('any', '.*');
+
+Route::get('/animales/{any}', function ($any) {
+    $path = public_path('animales/' . $any);
+
+    if (File::exists($path)) {
+        return File::get($path);
+    }
+
+    abort(404);
+})->where('any', '.*');
+
+
 
 //Route::get('/app/sumar/index.html')->name('suma');
 
