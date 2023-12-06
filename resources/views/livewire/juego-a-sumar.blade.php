@@ -20,21 +20,13 @@
         </div>
     </div>
     <div class="container">
-
-        @if ($prueba)
-            <div class="alert alert-success" role="alert">
-                {{ $prueba }}
-            </div>
-
-        @endif
-
         <div class="izquierdo" id="izquierdo">
             <div class="container-operacion">
                 <span id="suma">9 + 9 =</span>
                 <span class="resultado" id="resultado"> 18</span>
             </div>
             <span class="msj" id="msj"></span>
-            <div wire:click="guardarPuntaje($event.target.getAttribute('data-puntos'))" class="btn-jugar-de-nuevo" id="jugarDeNuevo">Jugar de nuevo</div>
+            <div  class="btn-jugar-de-nuevo" id="jugarDeNuevo">Jugar de nuevo</div>
         </div>
         <div class="derecha">
             <span id="op1" class="opcion" onclick="controlarRespuesta(this)">18</span>
