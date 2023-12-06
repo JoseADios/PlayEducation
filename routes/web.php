@@ -18,11 +18,11 @@ use App\Http\Livewire\StaticSignIn;
 use App\Http\Livewire\StaticSignUp;
 use App\Http\Livewire\Rtl;
 
-
 use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\LaravelExamples\UserManagement;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +35,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function() {
+Route::get('/', function () {
     return view('index');
-});
+})->name('/');
 
 Route::get('/sumar/{any}', function ($any) {
     $path = public_path('sumar/' . $any);
@@ -56,7 +56,7 @@ Route::get('/login', Login::class)->name('login');
 
 Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-password');
 
-Route::get('/reset-password/{id}',ResetPassword::class)->name('reset-password')->middleware('signed');
+Route::get('/reset-password/{id}', ResetPassword::class)->name('reset-password')->middleware('signed');
 
 
 Route::middleware('auth')->group(function () {
@@ -73,3 +73,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/estudiantes', Estudiantes::class)->name('estudiantes');
 });
 
+
+// estudiantes
+Route::middleware(['web'])->group(function () {
+
+    Route::get('/ruta-estudiante', function () {
+        return view('pagina-estudiantes');
+    })->middleware('auth:estudiante')->name('ruta-estudiante');
+
+    Route::get('login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'showLoginForm'])->middleware('auth.estudiante')->name('login-estudiante');
+    Route::post('login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'login']);
+
+    Route::post('/logout-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'logout'])->name('logout-estudiante');
+});

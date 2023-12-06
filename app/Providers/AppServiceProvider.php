@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Guards\EstudiantesGuard;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Auth::extend('estudiantes', function ($app, $name, array $config) {
+            return new EstudiantesGuard($name, Auth::createUserProvider($config['provider']), $app['session.store'], $app['request']);
+        });
     }
 }

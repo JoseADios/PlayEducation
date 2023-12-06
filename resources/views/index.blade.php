@@ -370,7 +370,7 @@
                 </ul>
             </div>
             <div class="">
-                <a class="btn btn-estud btn-primary mx-4 mb-0" href="#" type="submit">Estudiante</a>
+                <a class="btn btn-estud btn-primary mx-4 mb-0" href="/ruta-estudiante" type="submit">Estudiante</a>
                 <a class="btn btn-maestro btn-secondary mb-0" href="/dashboard" type="submit">Maestro</a>
             </div>
         </div>
