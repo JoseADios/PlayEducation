@@ -17,11 +17,11 @@ use App\Http\Livewire\StaticSignIn;
 use App\Http\Livewire\StaticSignUp;
 use App\Http\Livewire\Rtl;
 
-
 use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\LaravelExamples\UserManagement;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,3 +60,26 @@ Route::middleware('auth')->group(function () {
     Route::get('/estudiantes', Estudiantes::class)->name('estudiantes');
 });
 
+
+// estudiantes
+
+Route::get('/ruta-estudiante', function () {
+    return '¡Hola, estudiante!';
+})->middleware('auth:estudiante');
+
+Route::get('/login-estudiante', function () {
+    return view('livewire.login-estudiantes');
+})->name('login-estudiante');
+
+Route::post('/login-estudiante', function (Request $request) {
+    $credentials = $request->only('usuario', 'password');
+
+    if (Auth::guard('estudiante')->attempt($credentials)) {
+        // Autenticación exitosa, redirige a la ruta de estudiantes
+        return redirect()->intended('/ruta-estudiante');
+    } else {
+        return back()->withErrors([
+            'login-estudiante' => 'Las credenciales proporcionadas no son correctas.',
+        ]);
+    }
+});
