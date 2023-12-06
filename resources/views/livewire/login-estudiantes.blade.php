@@ -48,21 +48,20 @@
                         <div class="card-body">
                             <form action="/login-estudiante" method="POST" role="form text-left">
                                 @csrf
-
                                 <div class="mb-3">
-                                    <label for="email">{{ __('Correo') }}</label>
-                                    <div class="@error('email')border border-danger rounded-3 @enderror">
-                                        <input id="email" type="email" class="form-control" placeholder="Email"
-                                            aria-label="Email" aria-describedby="email-addon">
+                                    <label for="usuario">{{ __('Usuario') }}</label>
+                                    <div class="@error('usuario')border border-danger rounded-3 @enderror">
+                                        <input id="usuario" type="text" class="form-control" placeholder="usuario"
+                                            aria-label="usuario" name="usuario" aria-describedby="usuario-addon">
                                     </div>
-                                    @error('email')
+                                    @error('usuario')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="password">{{ __('Contraseña') }}</label>
                                     <div class="@error('password')border border-danger rounded-3 @enderror">
-                                        <input id="password" type="password" class="form-control"
+                                        <input id="password" name="password" type="password" class="form-control"
                                             placeholder="Password" aria-label="Password"
                                             aria-describedby="password-addon">
                                     </div>
@@ -75,11 +74,6 @@
                                         {{ $errors->first('error') }}
                                     </div>
                                 @endif
-                                {{-- <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox"
-                                        id="rememberMe">
-                                    <label class="form-check-label" for="rememberMe">{{ __('Recordarme') }}</label>
-                                </div> --}}
                                 <div class="text-center">
                                     <button type="submit"
                                         class="btn bg-gradient-info w-100 mt-4 mb-0">{{ __('Iniciar sesion') }}</button>
