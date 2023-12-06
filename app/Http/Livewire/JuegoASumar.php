@@ -2,22 +2,34 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Juego;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
 class JuegoASumar extends Component
 {
-    // public $estudiante;
+    public $estudianteA, $juego, $prueba;
 
-    // public function mount()
-    // {
-    //     $this->estudiante = Auth::guard('estudiante')->user();
-    // }
+    protected $listeners = ['envioPuntuacion' => 'guardarPuntaje'];
 
-    // public function guardarPuntaje()
-    // {
-    //     dd($this->estudiante);
-    // }
+    public function mount()
+    {
+        $this->prueba = false;
+        $this->juego = Juego::where('nombre', 'A Sumar')->first();
+        $this->estudianteA = Auth::guard('estudiante')->user();
+    }
+
+    public function guardarPuntaje($valor)
+    {
+        $this->prueba = true;
+        // guardar puntuacion
+        $this->estudianteA->puntuacions()->create([
+            'juego_id' => $this->juego->id,
+            'puntos' => $valor,
+        ]);
+
+
+    }
 
     public function render()
     {

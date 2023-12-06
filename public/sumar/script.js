@@ -116,6 +116,9 @@ function mostrarGameOver() {
         op3.style.display = 'inline-flex';
     });
 
+    window.livewire.emit('envioPuntuacion', puntos);
+    console.log('Evento envioPuntuacion emitido con valor:', puntos);
+
     // Agrega el botón al contenedor
     botonJugarDeNuevo.style.display = 'inline-flex';
 }
