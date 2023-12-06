@@ -474,7 +474,7 @@
                                     <h5 class="card-title">Lógica</h5>
                                     <p class="card-text">Desarrolla habilidades lógicas con acertijos y rompecabezas.
                                     </p>
-                                    <a href="#" class="btn btn-primary btn-log">Entrar</a>
+                                    <a href="/TicTac" class="btn btn-primary btn-log">Entrar</a>
                                 </div>
                             </div>
                         </div>

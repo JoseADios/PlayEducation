@@ -356,27 +356,6 @@
                 <h4 class="ps-3 play-edu mb-0">Play Education</h4>
             </a>
 
-            {{-- si el estudiante esta logueado cerrar sesion --}}
-            @if (Auth::guard('estudiante')->check())
-                {{-- nombre y apellido del usuario logueado --}}
-                <div class="d-flex align-items-center">
-                    <h5 class="text-center title-3">Bienvenido {{ Auth::guard('estudiante')->user()->nombre }}
-                        {{ Auth::guard('estudiante')->user()->apellido }}</h5>
-                </div>
-                {{-- cerrar sesion --}}
-                <form method="POST" action="{{ route('logout-estudiante') }}">
-                    @csrf
-                    <button type="submit" class="btn btn-estud">Cerrar sesión</button>
-                </form>
-            @else
-                {{-- login estudiantes --}}
-                <div class="d-flex align-items-center">
-                    <a href="{{ route('login-estudiante') }}" class="btn btn-estud">Iniciar Sesion</a>
-                </div>
-            @endif
-
-
-
     </nav>
     {{-- contenedor con imagen de niños de fondo --}}
 
