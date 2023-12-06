@@ -11,6 +11,10 @@ class Grupos extends Component
     $password_temp, $fecha_expiracion, $descripcion, $visiblePasswords;
     public $showPassword = false;
     public $modal = false;
+    public $mensajeExito = '';
+    public $mensajeError = '';
+
+
 
     public function crearGrupo()
     {
@@ -42,6 +46,9 @@ class Grupos extends Component
 
         $this->grupos = Grupo::where('docente_id', auth()->user()->id)->get();
         $this->initVisiblePasswords();
+        $this->fecha_expiracion = now()->format('Y-m-d\TH:i:s');
+
+
     }
 
     public function initVisiblePasswords()
@@ -69,6 +76,7 @@ class Grupos extends Component
 
     public function cerrarModal()
     {
+        $this->reset(['mensajeError', 'grupo_id', 'docente_id', 'nombre', 'password_temp', 'fecha_expiracion', 'descripcion']);
         $this->modal = false;
     }
 
@@ -90,18 +98,39 @@ class Grupos extends Component
 
     public function guardar()
     {
-        Grupo::updateOrCreate(['id' => $this->grupo_id],
-            [
-                'docente_id' => auth()->user()->id,
-                'nombre' => $this->nombre,
-                'password_temp' => $this->password_temp,
-                'fecha_expiracion' => $this->fecha_expiracion,
-                'descripcion' => $this->descripcion,
-            ]
-        );
 
+
+        $this->validate([
+            'nombre' => 'required|unique:grupos,nombre,NULL,id,docente_id,' . auth()->user()->id,
+            'password_temp' => 'required',
+            'fecha_expiracion' => 'required|date',
+            'descripcion' => 'required',
+        ], [
+            'nombre.required' => 'ya existe este nombre.',
+            'password_temp.required' => 'El campo Contraseña Temporal es obligatorio.',
+            'fecha_expiracion.required' => 'El campo Fecha de Expiración es obligatorio.',
+            'fecha_expiracion.date' => 'El campo Fecha de Expiración debe ser una fecha válida.',
+            'descripcion.required' => 'El campo Descripción es obligatorio.',
+        ]);
+
+
+        // Si la validación pasa, se procede a guardar en la base de datos
+        Grupo::updateOrCreate([
+            'id' => $this->grupo_id,
+        ], [
+            'docente_id' => auth()->user()->id,
+            'nombre' => $this->nombre,
+            'password_temp' => $this->password_temp,
+            'fecha_expiracion' => $this->fecha_expiracion,
+            'descripcion' => $this->descripcion,
+        ]);
+
+        $this->mensajeExito = '¡Grupo guardado exitosamente!';
         $this->cerrarModal();
         $this->limpiarCampos();
+
+        // Después de 1.5 segundos, reinicia los mensajes
+        $this->dispatchBrowserEvent('resetMensajes');
     }
 
 }
