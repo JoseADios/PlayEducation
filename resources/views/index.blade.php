@@ -425,7 +425,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Matemáticas</h5>
                                     <p class="card-text">Sumas, restas y más. ¡Aprende jugando con nuestros juegos!</p>
-                                    <a href="#" class="btn btn-primary btn-mat">Entrar</a>
+                                    <a href="/sumar" class="btn btn-primary btn-mat">Entrar</a>
                                 </div>
                             </div>
                         </div>

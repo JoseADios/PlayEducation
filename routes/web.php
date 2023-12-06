@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Estudiantes;
 use App\Http\Livewire\Grupos;
+use Illuminate\Support\Facades\File;
 
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,18 @@ use Illuminate\Http\Request;
 Route::get('/', function() {
     return view('index');
 });
+
+Route::get('/sumar/{any}', function ($any) {
+    $path = public_path('sumar/' . $any);
+
+    if (File::exists($path)) {
+        return File::get($path);
+    }
+
+    abort(404);
+})->where('any', '.*');
+
+//Route::get('/app/sumar/index.html')->name('suma');
 
 Route::get('/sign-up', SignUp::class)->name('sign-up');
 Route::get('/login', Login::class)->name('login');
