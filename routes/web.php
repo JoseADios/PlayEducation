@@ -73,5 +73,5 @@ Route::middleware(['web'])->group(function () {
     })->name('login-estudiante');
 
     Route::post('/logout-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'logout'])->name('logout-estudiante');
-    Route::post('/login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'login']);
+    Route::get('login-estudiante', 'EstudianteAuthController@showLoginForm')->middleware('auth.estudiante');
 });
