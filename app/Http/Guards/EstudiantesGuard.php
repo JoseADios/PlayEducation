@@ -46,7 +46,7 @@ class EstudiantesGuard extends SessionGuard
     {
         $estudiante = Estudiante::where('usuario', $credentials['usuario'])->first();
         if (!$estudiante) {
-            return false;
+            throw new \Exception('Los datos proporcionados no coinciden con nuestros registros.');
         }
 
         $grupo = Grupo::where('id', $estudiante->grupo_id)->first();
@@ -55,13 +55,11 @@ class EstudiantesGuard extends SessionGuard
 
         // Comprueba si la fecha de expiración ya ha pasado
         if (Carbon::now()->greaterThan($fechaExpiracion)) {
-            dd('La fecha de expiración ha pasado.'); // Imprime un mensaje si la fecha de expiración ya ha pasado
-            return false;
+            throw new \Exception('La contraseña ha expirado, contacta con tu profesor para que te proporcione una nueva.');
         }
 
         if ($credentials['password'] != $pass) {
-            dd('La contraseña proporcionada no coincide con la contraseña del grupo.'); // Imprime un mensaje si la contraseña no coincide
-            return false;
+            throw new \Exception('Los datos proporcionados no coinciden con nuestros registros.');
         }
 
         $this->login($estudiante, $remember);

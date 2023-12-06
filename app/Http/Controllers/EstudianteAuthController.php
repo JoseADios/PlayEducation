@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Exception;
 
 class EstudianteAuthController extends Controller
 {
@@ -28,14 +29,19 @@ class EstudianteAuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('usuario', 'password');
+        $guard = Auth::guard('estudiante');
 
-        if (Auth::guard('estudiante')->attempt($credentials)) {
-            return redirect()->intended('ruta-estudiante');
-        } else {
-            return back()->withErrors([
-                'login' => 'Las credenciales proporcionadas no son válidas.',
-            ]);
+        try {
+            if ($guard->attempt($credentials)) {
+                return redirect()->intended('ruta-estudiante');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
+
+        return back()->withErrors([
+            'login' => 'Las credenciales proporcionadas no son válidas.',
+        ]);
     }
 
     public function logout(Request $request)
