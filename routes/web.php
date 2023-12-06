@@ -101,7 +101,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['web'])->group(function () {
 
     Route::get('/ruta-estudiante', function () {
-        return view('pagina-estudiantes');
+        return view('juegos');
     })->middleware('auth:estudiante')->name('ruta-estudiante');
 
     Route::get('login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'showLoginForm'])->middleware('auth.estudiante')->name('login-estudiante');

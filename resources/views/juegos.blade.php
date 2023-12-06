@@ -225,7 +225,7 @@
             height: 100%;
         }
 
-        .cont-img-interactiva{
+        .cont-img-interactiva {
             background-image: url('/images/home/educacion-interactiva.jpg');
 
         }
@@ -267,27 +267,30 @@
             border-radius: 2rem;
             overflow: hidden;
         }
+
         .cont-about-2 {
             border: #fb6f1aa3 solid 2px;
             border-radius: 2rem;
             overflow: hidden;
         }
+
         .cont-about-3 {
             border: #ac26c3ab solid 2px;
             border-radius: 2rem;
             overflow: hidden;
         }
 
-        footer{
-            background-color: #e4e8f3;;
+        footer {
+            background-color: #e4e8f3;
+            ;
             border-top: 1px solid #e3e6ef;
         }
 
-        .list-unstyled > li > a{
+        .list-unstyled>li>a {
             color: var(--color-azul);
         }
 
-        .cont-img-breve-desc{
+        .cont-img-breve-desc {
             background-image: url('/images/home/niña-con-movil.avif');
             background-size: cover;
             background-position: center;
@@ -295,7 +298,7 @@
             height: 100%;
         }
 
-        .cont-img-mat{
+        .cont-img-mat {
             background-image: url('/images/home/juegos-matematicas.jpg');
             background-size: cover;
             background-position: center;
@@ -303,7 +306,7 @@
             height: 10rem;
         }
 
-        .cont-img-lit{
+        .cont-img-lit {
             background-image: url('/images/home/juegos-literatura.jpg');
             background-size: cover;
             background-position: center;
@@ -311,7 +314,7 @@
             height: 10rem;
         }
 
-        .cont-img-soc{
+        .cont-img-soc {
             background-image: url('/images/home/juegos-sociales.jpg');
             background-size: cover;
             background-position: center;
@@ -319,7 +322,7 @@
             height: 10rem;
         }
 
-        .cont-img-nat{
+        .cont-img-nat {
             background-image: url('/images/home/juegos-naturales.jpg');
             background-size: cover;
             background-position: center;
@@ -327,7 +330,7 @@
             height: 10rem;
         }
 
-        .cont-img-log{
+        .cont-img-log {
             background-image: url('/images/home/juegos-logica.jpg');
             background-size: cover;
             background-position: center;
@@ -335,14 +338,13 @@
             height: 10rem;
         }
 
-        .cont-variedad-juegos{
+        .cont-variedad-juegos {
             background-image: url('/images/home/variedad-juegos.jpeg');
         }
 
-        .cont-seguimiento{
+        .cont-seguimiento {
             background-image: url('/images/home/graficos.jpg');
         }
-
     </style>
 </head>
 
@@ -354,90 +356,108 @@
                 <h4 class="ps-3 play-edu mb-0">Play Education</h4>
             </a>
 
+            {{-- si el estudiante esta logueado cerrar sesion --}}
+            @if (Auth::guard('estudiante')->check())
+                {{-- nombre y apellido del usuario logueado --}}
+                <div class="d-flex align-items-center">
+                    <h5 class="text-center title-3">Bienvenido {{ Auth::guard('estudiante')->user()->nombre }}
+                        {{ Auth::guard('estudiante')->user()->apellido }}</h5>
+                </div>
+                {{-- cerrar sesion --}}
+                <form method="POST" action="{{ route('logout-estudiante') }}">
+                    @csrf
+                    <button type="submit" class="btn btn-estud">Cerrar sesión</button>
+                </form>
+            @else
+                {{-- login estudiantes --}}
+                <div class="d-flex align-items-center">
+                    <a href="{{ route('login-estudiante') }}" class="btn btn-estud">Iniciar Sesion</a>
+                </div>
+            @endif
+
+
+
     </nav>
     {{-- contenedor con imagen de niños de fondo --}}
 
-                <div class="cont-img2 col d-flex justify-content-end position-relative">
-                    <div class="cont-img-breve-desc"></div>
-                    <div class="cover-img-2 position-absolute w-100 h-100"></div>
-                </div>
-            </div>
+    <div class="cont-img2 col d-flex justify-content-end position-relative">
+        <div class="cont-img-breve-desc"></div>
+        <div class="cover-img-2 position-absolute w-100 h-100"></div>
+    </div>
+    </div>
 
-            {{-- Categorias de juegos --}}
-            <div class="col mt-6 p-2">
-                <div class="px-4 pb-4 enc-3">
-                    <h1 class="text-center title-3" id="categorias-juegos" >Categorías</h1>
-                </div>
-                <div class="container w-100 text-center">
-                    <div class="row row-cols-5 justify-content-center d-flex align-items-stretch">
+    {{-- Categorias de juegos --}}
+    <div class="col mt-6 p-2">
+        <div class="px-4 pb-4 enc-3">
+            <h1 class="text-center title-3" id="categorias-juegos">Categorías</h1>
+        </div>
+        <div class="container w-100 text-center">
+            <div class="row row-cols-5 justify-content-center d-flex align-items-stretch">
 
-                        <div class="col">
-                            <div class="card mt-4">
-                                <div class="card-img-top cont-img-mat">
-                                </div>
-                                {{-- <img src="/images/home/juegos-matematicas.jpg" class="card-img-top"
+                <div class="col">
+                    <div class="card mt-4">
+                        <div class="card-img-top cont-img-mat">
+                        </div>
+                        {{-- <img src="/images/home/juegos-matematicas.jpg" class="card-img-top"
                                     alt="Imagen de Matemáticas"> --}}
-                                <div class="card-body">
-                                    <h5 class="card-title">Matemáticas</h5>
-                                    <p class="card-text">Sumas, restas y más. ¡Aprende jugando con nuestros juegos!</p>
-                                    <a href="/a-sumar" class="btn btn-primary btn-mat">Entrar</a>
-                                </div>
-                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Matemáticas</h5>
+                            <p class="card-text">Sumas, restas y más. ¡Aprende jugando con nuestros juegos!</p>
+                            <a href="/a-sumar" class="btn btn-primary btn-mat">Entrar</a>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="col">
-                            <div class="card mt-4">
-                                <div class="card-img-top cont-img-lit">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Literatura</h5>
-                                    <p class="card-text">Domina vocabulario y gramática con nuestros divertidos juegos.</p>
-                                    <a href="animales" class="btn btn-primary btn-lit">Entrar</a>
-                                </div>
-                            </div>
+                <div class="col">
+                    <div class="card mt-4">
+                        <div class="card-img-top cont-img-lit">
                         </div>
-
-                        <div class="col">
-                            <div class="card mt-4">
-                                <div class="card-img-top cont-img-soc">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Ciencias Sociales</h5>
-                                    <p class="card-text">Explora geografía e historia con juegos fascinantes.</p>
-                                    <a href="#" class="btn btn-primary btn-soc">Entrar</a>
-                                </div>
-                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Literatura</h5>
+                            <p class="card-text">Domina vocabulario y gramática con nuestros divertidos juegos.</p>
+                            <a href="animales" class="btn btn-primary btn-lit">Entrar</a>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="col">
-                            <div class="card mt-4">
-                                <div class="card-img-top cont-img-nat">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Ciencias Naturales</h5>
-                                    <p class="card-text">Descubre biología, ecología y más en nuestros juegos.</p>
-                                    <a href="#" class="btn btn-primary btn-nat">Entrar</a>
-                                </div>
-                            </div>
+                <div class="col">
+                    <div class="card mt-4">
+                        <div class="card-img-top cont-img-soc">
                         </div>
-
-                        <div class="col">
-                            <div class="card mt-4">
-                                <div class="card-img-top cont-img-log">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Lógica</h5>
-                                    <p class="card-text">Desarrolla habilidades lógicas con acertijos y rompecabezas.
-                                    </p>
-                                    <a href="#" class="btn btn-primary btn-log">Entrar</a>
-                                </div>
-                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Ciencias Sociales</h5>
+                            <p class="card-text">Explora geografía e historia con juegos fascinantes.</p>
+                            <a href="#" class="btn btn-primary btn-soc">Entrar</a>
                         </div>
+                    </div>
+                </div>
 
+                <div class="col">
+                    <div class="card mt-4">
+                        <div class="card-img-top cont-img-nat">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Ciencias Naturales</h5>
+                            <p class="card-text">Descubre biología, ecología y más en nuestros juegos.</p>
+                            <a href="#" class="btn btn-primary btn-nat">Entrar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card mt-4">
+                        <div class="card-img-top cont-img-log">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Lógica</h5>
+                            <p class="card-text">Desarrolla habilidades lógicas con acertijos y rompecabezas.
+                            </p>
+                            <a href="#" class="btn btn-primary btn-log">Entrar</a>
+                        </div>
                     </div>
                 </div>
 
             </div>
+        </div>
 
-
-
+    </div>
