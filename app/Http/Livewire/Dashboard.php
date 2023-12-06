@@ -26,14 +26,18 @@ class Dashboard extends Component
     public function pruebaToTrue()
     {
         $this->prueba = true;
-
     }
 
 
     public function mount()
     {
         $this->docente = auth()->user();
-        $this->grupo_id = $this->docente->grupos->where('activo', 1)->first()->id;
+        $grupo = $this->docente->grupos->where('activo', 1)->first();
+
+        if ($grupo) {
+            $this->grupo_id = $grupo->id;
+        }
+
         $this->grupos = $this->docente->grupos->where('activo', 1);
         $this->cargarDatos();
     }
@@ -92,7 +96,6 @@ class Dashboard extends Component
             ->value('count');
 
         $this->cantidadPuntuaciones = $data;
-
     }
 
     public function obtenerCantidadLogros()
@@ -141,17 +144,16 @@ class Dashboard extends Component
             ->orderBy('mes', 'asc')
             ->get();
 
-            $grupos = [];
-            foreach ($data as $resultado) {
-                if (!isset($grupos[$resultado->nombre])) {
-                    $grupos[$resultado->nombre] = [];
-                }
-                $grupos[$resultado->nombre][] = $resultado;
+        $grupos = [];
+        foreach ($data as $resultado) {
+            if (!isset($grupos[$resultado->nombre])) {
+                $grupos[$resultado->nombre] = [];
             }
+            $grupos[$resultado->nombre][] = $resultado;
+        }
 
 
         $this->avgCalificacionByMes = json_encode($grupos);
-
     }
 
     public function obtener10MejoresEstudiantes()
