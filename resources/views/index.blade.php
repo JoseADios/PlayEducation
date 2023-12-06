@@ -437,7 +437,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Literatura</h5>
                                     <p class="card-text">Domina vocabulario y gramática con nuestros divertidos juegos.</p>
-                                    <a href="#" class="btn btn-primary btn-lit">Entrar</a>
+                                    <a href="/animales" class="btn btn-primary btn-lit">Entrar</a>
                                 </div>
                             </div>
                         </div>
@@ -483,7 +483,7 @@
                 </div>
 
             </div>
-     
+
             {{-- Acerca de nosotros --}}
             <div class="col p-0">
 

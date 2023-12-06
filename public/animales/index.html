@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/animales/styles.css">
+    <title>Adivina el Animal</title>
+</head>
+<body>
+
+    <div id="game-container">
+        <h1>Adivina el Animal</h1>
+        <img id="animal-image" src="" alt="Adivina el Animal">
+        <input type="text" id="animal-input" placeholder="Ingresa el nombre del animal">
+        <div>
+        <button id="submit-btn" onclick="verificarRespuesta()">Adivinar</button>
+        </div>
+        <p id="result-message"></p>
+        <p id="attempts">Intentos restantes: <span id="attempts-count">3</span></p>
+    </div>
+    <script src="/animales/script.js"></script>
+</body>
+</html>
