@@ -6,6 +6,7 @@ op3 = document.getElementById("op3");
 txt_msj = document.getElementById("msj");
 txt_resultado = document.getElementById("resultado");
 txt_puntos = document.getElementById("puntos"); // Nuevo
+botonJugarDeNuevo = document.getElementById("jugarDeNuevo");
 
 var puntos = 0;
 var txt_puntos = document.getElementById("puntos");
@@ -15,9 +16,8 @@ var txt_intentos = document.getElementById("intentos");
 function comenzar() {
     txt_resultado.innerHTML = "?";
     txt_msj.innerHTML = "";
-	txt_puntos.innerHTML = "Puntos: " + puntos + " 🌟"; // Añadido el icono al texto
-	txt_intentos.innerHTML = "Intentos restantes: " + intentosRestantes + " 🚀"; // Añadido el icono al texto
-	
+    txt_puntos.innerHTML = "Puntos: " + puntos + " 🌟"; // Añadido el icono al texto
+    txt_intentos.innerHTML = "Intentos restantes: " + intentosRestantes + " 🚀"; // Añadido el icono al texto
 
     //genera la suma - Numeros aleatorios entre 0 1 9
     num1 = Math.round(Math.random() * 9);
@@ -48,7 +48,6 @@ function comenzar() {
     }
 }
 
-
 function controlarRespuesta(opcionElegida) {
     txt_resultado.innerHTML = opcionElegida.innerHTML;
     if (respuesta == opcionElegida.innerHTML) {
@@ -58,7 +57,9 @@ function controlarRespuesta(opcionElegida) {
         txt_msj.style.color = "green";
         setTimeout(comenzar, 2000);
     } else {
-        intentosRestantes -= 1;
+        if (intentosRestantes > 0) {
+            intentosRestantes -= 1;
+        }
         txt_intentos.innerHTML = "Intentos restantes: " + intentosRestantes + " 🚀";
         txt_msj.innerHTML = "INTENTA DE NUEVO!!";
         txt_msj.style.color = "red";
@@ -73,18 +74,59 @@ function controlarRespuesta(opcionElegida) {
         }
     }
 }
-
 function resetJuego() {
-    intentosRestantes = 3;
-    puntos = 0;
-    txt_intentos.innerHTML = "Intentos restantes: " + intentosRestantes + " 🚀";
-    txt_puntos.innerHTML = "Puntos: " + puntos + " 🌟";
-    comenzar();
+    // Oculta los botones de respuesta al reiniciar el juego
+    op1.style.display = 'none';
+    op2.style.display = 'none';
+    op3.style.display = 'none';
+
+    if (intentosRestantes === 0) {
+        intentosRestantes = 3;
+        txt_intentos.innerHTML = "Intentos restantes: " + intentosRestantes + " 🚀";
+        puntos = 0;
+        txt_puntos.innerHTML = "Puntos: " + puntos + " 🌟";
+        mostrarGameOver();
+    } else {
+        comenzar();
+    }
 }
+
+function mostrarGameOver() {
+
+    // Muestra el mensaje de GAME OVER
+    txt_msj.innerHTML = "GAME OVER";
+    txt_msj.style.color = "red";
+
+    // Muestra la puntuación y el botón para jugar de nuevo
+    txt_puntos.innerHTML = "Puntuación final: " + puntos + " 🌟";
+
+    botonJugarDeNuevo.addEventListener("click", function () {
+        // Reinicia el juego al hacer clic en el botón
+        txt_msj.innerHTML = "";
+        botonJugarDeNuevo.style.display = 'none';
+
+        txt_puntos.innerHTML = "Puntos: " + puntos + " 🌟";
+        intentosRestantes = 3;
+        txt_intentos.innerHTML = "Intentos restantes: " + intentosRestantes + " 🚀";
+        puntos = 0;
+        comenzar();
+
+        op1.style.display = 'inline-flex'; // o 'block' según el estilo que necesites
+        op2.style.display = 'inline-flex';
+        op3.style.display = 'inline-flex';
+    });
+
+    // Agrega el botón al contenedor
+    botonJugarDeNuevo.style.display = 'inline-flex';
+}
+
+// Resto del código
+
 
 function limpiar() {
     txt_resultado.innerHTML = "?";
     txt_msj.innerHTML = "";
+    botonJugarDeNuevo.style.display = 'none';
 }
 
 comenzar();

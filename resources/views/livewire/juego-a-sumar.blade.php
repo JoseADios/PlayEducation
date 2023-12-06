@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de suma</title>
-    <link rel="stylesheet" href="/sumar/estilo.css">
-   <!-- <link rel="stylesheet" href="estilo.css"> -->
+    <link rel="stylesheet" href="{{ asset('sumar/estilo.css') }}">
 </head>
-<body>
+
+<div>
+    <div class=""></div>
+    <div class="btn-volver">
+        <a href="{{ route('juegos') }}" class="btn btn-primary">Volver</a>
+    </div>
     <h1>A SUMAR</h1>
     <div class="contador-container">
         <div id="puntos" class="contador">
@@ -21,19 +20,21 @@
     </div>
     <div class="container">
 
-        <div class="izquierdo">
+        <div class="izquierdo" id="izquierdo">
             <div class="container-operacion">
                 <span id="suma">9 + 9 =</span>
                 <span class="resultado" id="resultado"> 18</span>
             </div>
             <span class="msj" id="msj"></span>
+            <div wire:click="guardarPuntuacion()" class="btn-jugar-de-nuevo" id="jugarDeNuevo">Jugar de nuevo</div>
         </div>
         <div class="derecha">
-            <button id="op1" class="opcion" onclick="controlarRespuesta(this)">18</button>
-            <button id="op2" class="opcion" onclick="controlarRespuesta(this)">17</button>
-            <button id="op3" class="opcion" onclick="controlarRespuesta(this)">8</button>
+            <span id="op1" class="opcion" onclick="controlarRespuesta(this)">18</span>
+            <span id="op2" class="opcion" onclick="controlarRespuesta(this)">17</span>
+            <span id="op3" class="opcion" onclick="controlarRespuesta(this)">8</span>
         </div>
     </div>
-    <script src="/sumar/script.js"></script>
-</body>
-</html>
+    <script src="{{ asset('sumar/script.js') }}"></script>
+</div>
+
+
