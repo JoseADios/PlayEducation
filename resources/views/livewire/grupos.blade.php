@@ -22,6 +22,7 @@
         </div>
     </div>
 
+
     @forelse ($grupos as $grupo)
         <div class="row">
             <div class="col-12">
@@ -118,6 +119,8 @@
         <p>No hay grupos disponibles.</p>
     @endforelse
 </div>
+
+
 
 
 
