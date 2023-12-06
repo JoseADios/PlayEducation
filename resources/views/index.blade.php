@@ -567,7 +567,7 @@
                             <a class="" href="/">Inicio</a>
                         </li>
                         <li class="me-3">
-                            <a class="" href="#">Juegos</a>
+                            <a class="" href="/juegos">Juegos</a>
                         </li>
                         <li class="me-3">
                             <a class="" href="#categorias-juegos">Categorias</a>
