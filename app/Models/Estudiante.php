@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Estudiante extends Model
+class Estudiante extends Authenticatable
 {
     use HasFactory;
+
+    protected $guard = 'estudiante';
 
     protected $fillable = [
         'grupo_id',
@@ -16,6 +18,10 @@ class Estudiante extends Model
         'usuario',
         'activo',
         'genero',
+    ];
+
+    protected $hidden = [
+        'password', // Oculta la contraseña en las respuestas JSON
     ];
 
     public function observaciones()

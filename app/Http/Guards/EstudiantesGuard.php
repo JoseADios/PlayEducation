@@ -40,8 +40,8 @@ class EstudiantesGuard extends SessionGuard
         }
 
         $pass = Grupo::where('id', $estudiante->grupo_id)->first()->password_temp;
-
-        if (!Hash::check($credentials['password'], $pass)) {
+        if ($credentials['password'] != $pass) {
+            dd('La contraseña proporcionada no coincide con la contraseña del grupo.'); // Imprime un mensaje si la contraseña no coincide
             return false;
         }
 

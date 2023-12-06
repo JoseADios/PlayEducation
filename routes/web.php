@@ -34,7 +34,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function() {
+Route::get('/', function () {
     return view('index');
 });
 
@@ -43,7 +43,7 @@ Route::get('/login', Login::class)->name('login');
 
 Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-password');
 
-Route::get('/reset-password/{id}',ResetPassword::class)->name('reset-password')->middleware('signed');
+Route::get('/reset-password/{id}', ResetPassword::class)->name('reset-password')->middleware('signed');
 
 
 Route::middleware('auth')->group(function () {
@@ -65,7 +65,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/ruta-estudiante', function () {
     return '¡Hola, estudiante!';
-})->middleware('auth:estudiante');
+})->middleware('auth:estudiante')->name('ruta-estudiante');
 
 Route::get('/login-estudiante', function () {
     return view('livewire.login-estudiantes');
@@ -76,10 +76,14 @@ Route::post('/login-estudiante', function (Request $request) {
 
     if (Auth::guard('estudiante')->attempt($credentials)) {
         // Autenticación exitosa, redirige a la ruta de estudiantes
-        return redirect()->intended('/ruta-estudiante');
+        if (Auth::guard('estudiante')->check()) {
+            return redirect()->intended('ruta-estudiante');
+            dd('La sesión se inició correctamente');
+        } else {
+            dd('La sesión no se inició correctamente');
+        }
     } else {
-        return back()->withErrors([
-            'login-estudiante' => 'Las credenciales proporcionadas no son correctas.',
-        ]);
+        // Autenticación fallida, imprime un mensaje de error
+        dd('Las credenciales proporcionadas no son válidas.');
     }
 });
