@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Estudiante;
 use Illuminate\Http\Request;
 use App\Models\Grupo;
+use Carbon\Carbon;
 use Illuminate\Contracts\Cookie\QueueingFactory as CookieJar;
 
 class EstudiantesGuard extends SessionGuard
@@ -48,7 +49,16 @@ class EstudiantesGuard extends SessionGuard
             return false;
         }
 
-        $pass = Grupo::where('id', $estudiante->grupo_id)->first()->password_temp;
+        $grupo = Grupo::where('id', $estudiante->grupo_id)->first();
+        $pass = $grupo->password_temp;
+        $fechaExpiracion = $grupo->fecha_expiracion;
+
+        // Comprueba si la fecha de expiración ya ha pasado
+        if (Carbon::now()->greaterThan($fechaExpiracion)) {
+            dd('La fecha de expiración ha pasado.'); // Imprime un mensaje si la fecha de expiración ya ha pasado
+            return false;
+        }
+
         if ($credentials['password'] != $pass) {
             dd('La contraseña proporcionada no coincide con la contraseña del grupo.'); // Imprime un mensaje si la contraseña no coincide
             return false;
