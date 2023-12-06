@@ -353,7 +353,27 @@
                 <img src="../assets/img/logo-ct.png" alt="Bootstrap" width="70" height="70">
                 <h4 class="ps-3 play-edu mb-0">Play Education</h4>
             </a>
-
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/juegos">Juegos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#categorias-juegos">Categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-us">Sobre nosotros</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="">
+                <a class="btn btn-estud btn-primary mx-4 mb-0" href="/ruta-estudiante" type="submit">Estudiante</a>
+                <a class="btn btn-maestro btn-secondary mb-0" href="/dashboard" type="submit">Maestro</a>
+            </div>
+        </div>
     </nav>
     {{-- contenedor con imagen de niños de fondo --}}
 
