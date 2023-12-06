@@ -26,7 +26,7 @@
                 <span class="resultado" id="resultado"> 18</span>
             </div>
             <span class="msj" id="msj"></span>
-            <div class="btn-jugar-de-nuevo" id="jugarDeNuevo">Jugar de nuevo</div>
+            <div wire:click="guardarPuntuacion()" class="btn-jugar-de-nuevo" id="jugarDeNuevo">Jugar de nuevo</div>
         </div>
         <div class="derecha">
             <span id="op1" class="opcion" onclick="controlarRespuesta(this)">18</span>
