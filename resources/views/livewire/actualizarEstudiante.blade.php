@@ -227,7 +227,7 @@
                     <div class="row-8 mt-4">
                         <h6><i>Actividades recientes</i></h6>
                         <div wire:ignore class="overflow-hidden">
-                            @livewire('puntuaciones', ['estudiante_id' => $estudiante_id])
+                            @livewire('actividades-recientes', ['estudiante_id' => $estudiante_id])
                         </div>
                     </div>
                 </div>
