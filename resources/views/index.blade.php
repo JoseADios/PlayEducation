@@ -384,7 +384,7 @@
                 <div class="position-absolute p-8">
                     <p class="encabezado-txt text-uppercase">Descubre el Mundo del <br> <strong>Aprendizaje
                             Interactivo</strong> </p>
-                    <a class="btn mt-4 btn-lg btn-registrarse btn-primary mb-0" href="#" type="submit">Registrate
+                    <a class="btn mt-4 btn-lg btn-registrarse btn-primary mb-0" href="/sign-up" type="submit">Registrate
                         aqui</a>
                 </div>
                 <img class="img-niños" src="/images/home/niños-estudiando.jpg" alt="Niños estudiando" class="w-100">

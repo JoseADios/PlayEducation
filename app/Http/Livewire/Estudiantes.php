@@ -14,6 +14,7 @@ class Estudiantes extends Component
     public $modalCrearEst = false;
     public $modalEditarEst = false;
     public $modalEliminarEst = false;
+    public $modalVerPuntuaciones = false;
 
     public $estActivos = true;
 
@@ -201,6 +202,22 @@ class Estudiantes extends Component
         $this->clearObservaciones();
 
     }
+
+    // puntuaciones
+    public function cerrarMdlVerPuntuaciones()
+    {
+        $this->estudiante_id = '';
+        $this->modalVerPuntuaciones = false;
+    }
+
+    public function abrirMdlVerPuntuaciones($id)
+    {
+        $this->cerrarMdlVerPuntuaciones();
+
+        $this->estudiante_id = $id;
+        $this->modalVerPuntuaciones = true;
+    }
+
 
     public function render()
     {

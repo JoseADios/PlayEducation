@@ -10,6 +10,20 @@
             @if ($modalEliminarEst)
                 @include('livewire.eliminarEstudiante')
             @endif
+            @if ($modalVerPuntuaciones)
+                <div class="position-fixed mdl p-4 d-flex justify-content-center align-items-center" id="modalverPunts">
+                    <div class="body-mdl p-4">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="">Historial de puntuaciones</h5>
+                            <button wire:click="cerrarMdlVerPuntuaciones()" type="button"
+                                class="btn-close btn-close-white" aria-label="Close"></button>
+                        </div>
+                        <div class="">
+                            @livewire('puntuaciones', ['estudiante_id' => $estudiante_id])
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
     <div class="row">
@@ -122,7 +136,8 @@
                                                     {{ $estudiante->apellido }}</p>
                                             </td>
                                             <td class="text-center">
-                                                <p class="text-xs font-weight-bold mb-0">{{ $estudiante->usuario }}</p>
+                                                <p class="text-xs font-weight-bold mb-0">{{ $estudiante->usuario }}
+                                                </p>
                                             </td>
                                             <td class="text-center">
                                                 <span
@@ -130,6 +145,10 @@
                                             </td>
                                             @if ($estudiante->activo == 1)
                                                 <td class="text-center">
+                                                    <a wire:click="abrirMdlVerPuntuaciones({{ $estudiante->id }})"
+                                                        data-bs-toggle="tooltip" data-bs-original-title="Puntuaciones">
+                                                        <i class="cursor-pointer fas fa-star text-secondary"></i>
+                                                    </a>
                                                     <a wire:click="editarEst({{ $estudiante->id }})" class="mx-3"
                                                         data-bs-toggle="tooltip" data-bs-original-title="Editar">
                                                         <i class="fas fa-user-edit text-secondary"></i>
@@ -169,6 +188,25 @@
 </div>
 
 <style>
+    #modalverPunts {
+        z-index: 9999 !important;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-color: #0000001f;
+    }
+
+    .body-mdl {
+        background-color: white;
+        border-radius: 10px;
+        width: 60%;
+        height: 80%;
+        max-height: 80%;
+        border: 1px solid #ccc;
+        box-shadow: #00000047 0px 0px 79px -7px;
+    }
+
     .head-ests {
         box-shadow: 0 20px 27px 0 #ac26c32d;
     }
