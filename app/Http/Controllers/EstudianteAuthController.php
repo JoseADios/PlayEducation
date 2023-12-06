@@ -16,6 +16,15 @@ class EstudianteAuthController extends Controller
         });
     }
 
+    public function showLoginForm()
+    {
+        if (Auth::guard('estudiante')->check()) {
+            return redirect('ruta-estudiante');
+        }
+
+        return view('livewire.login-estudiantes');
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->only('usuario', 'password');

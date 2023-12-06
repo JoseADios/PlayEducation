@@ -68,10 +68,8 @@ Route::middleware(['web'])->group(function () {
         return view('pagina-estudiantes');
     })->middleware('auth:estudiante')->name('ruta-estudiante');
 
-    Route::get('/login-estudiante', function () {
-        return view('livewire.login-estudiantes');
-    })->name('login-estudiante');
+    Route::get('login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'showLoginForm'])->middleware('auth.estudiante')->name('login-estudiante');
+    Route::post('login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'login']);
 
     Route::post('/logout-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'logout'])->name('logout-estudiante');
-    Route::get('login-estudiante', 'EstudianteAuthController@showLoginForm')->middleware('auth.estudiante');
 });
