@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('/');
 
 Route::get('/sign-up', SignUp::class)->name('sign-up');
 Route::get('/login', Login::class)->name('login');
