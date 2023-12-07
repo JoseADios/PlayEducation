@@ -24,7 +24,8 @@ class Grupos extends Component
 
     public function render()
     {
-        $this->grupos = Grupo::where('docente_id', auth()->user()->id)->get();
+
+        $this->grupos = Grupo::where('docente_id', auth()->user()->id)->where('activo', true)->get();
         return view('livewire.grupos');
     }
 
@@ -39,6 +40,25 @@ class Grupos extends Component
         $this->descripcion = $grupo->descripcion;
 
         $this->abrirModal();
+    }
+
+    public function mostrarTodos()
+    {
+        $this->grupos = Grupo::where('docente_id', auth()->user()->id)->get();
+    }
+
+    public function reactivar($id)
+    {
+        $grupo = Grupo::find($id);
+        $grupo->activo = true;
+        $grupo->save();
+    }
+
+    public function desactivar($id)
+    {
+        $grupo = Grupo::find($id);
+        $grupo->activo = false;
+        $grupo->save();
     }
 
     public function mount()
@@ -93,8 +113,7 @@ class Grupos extends Component
 
     public function borrar($id)
     {
-        Grupo::find($id)->delete();
-    }
+        $this->desactivar($id);    }
 
     public function guardar()
     {
@@ -109,7 +128,7 @@ class Grupos extends Component
             'password_temp.required' => 'El campo Contraseña Temporal es obligatorio.',
             'fecha_expiracion.required' => 'El campo Fecha de Expiración es obligatorio.',
             'fecha_expiracion.date' => 'El campo Fecha de Expiración debe ser una fecha válida.',
-            
+
         ]);
 
 
