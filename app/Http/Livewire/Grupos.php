@@ -118,6 +118,7 @@ class Grupos extends Component
     public function guardar()
     {
 
+
         $this->validate([
             'nombre' => 'required|unique:grupos,nombre,NULL,id,docente_id,' . auth()->user()->id,
             'password_temp' => 'required',

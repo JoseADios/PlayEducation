@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Estudiantes;
 use App\Http\Livewire\Grupos;
+use App\Http\Livewire\JuegoASumar;
 use Illuminate\Support\Facades\File;
 
 use Illuminate\Support\Facades\Route;
@@ -35,13 +36,19 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+// Route::get('/a-sumar', function () {
+//     return view('livewire.juego-a-sumar');
+// })->name('a-sumar');
+
+Route::get('/a-sumar', JuegoASumar::class)->name('a-sumar');
+
 Route::get('/', function () {
     return view('index');
 })->name('/');
 
 Route::get('/juegos', function () {
     return view('juegos');
-})->name('/');
+})->name('juegos');
 
 Route::get('/sumar/{any}', function ($any) {
     $path = public_path('sumar/' . $any);
@@ -104,7 +111,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['web'])->group(function () {
 
     Route::get('/ruta-estudiante', function () {
-        return view('pagina-estudiantes');
+        return view('juegos');
     })->middleware('auth:estudiante')->name('ruta-estudiante');
 
     Route::get('login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'showLoginForm'])->middleware('auth.estudiante')->name('login-estudiante');
