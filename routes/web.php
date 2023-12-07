@@ -36,11 +36,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/a-sumar', function () {
-//     return view('livewire.juego-a-sumar');
-// })->name('a-sumar');
+Route::get('/a-sumar', function () {
+    return view('livewire.juego-a-sumar');
+})->name('a-sumar');
 
-Route::get('/a-sumar', JuegoASumar::class)->name('a-sumar');
+// Route::get('/a-sumar', JuegoASumar::class)->name('a-sumar');
 
 Route::get('/', function () {
     return view('index');
