@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -142,6 +143,7 @@
             color: var(--color-morado);
             align: var(--center);
         }
+
 
         .btn-mat {
             background-color: var(--color-azul);
@@ -303,6 +305,7 @@
             height: 10rem;
         }
 
+
         .cont-img-lit{
             background-image: url('/images/home/animales.png');
             background-size: cover;
@@ -353,28 +356,27 @@
                 <img src="../assets/img/logo-ct.png" alt="Bootstrap" width="70" height="70">
                 <h4 class="ps-3 play-edu mb-0">Play Education</h4>
             </a>
-
-            {{-- si el estudiante esta logueado cerrar sesion --}}
-            @if (Auth::guard('estudiante')->check())
-                {{-- nombre y apellido del usuario logueado --}}
-                <div class="d-flex align-items-center">
-                    <h5 class="text-center title-3">Bienvenido {{ Auth::guard('estudiante')->user()->nombre }}
-                        {{ Auth::guard('estudiante')->user()->apellido }}</h5>
-                </div>
-                {{-- cerrar sesion --}}
-                <form method="POST" action="{{ route('logout-estudiante') }}">
-                    @csrf
-                    <button type="submit" class="btn btn-estud">Cerrar sesión</button>
-                </form>
-            @else
-                {{-- login estudiantes --}}
-                <div class="d-flex align-items-center">
-                    <a href="{{ route('login-estudiante') }}" class="btn btn-estud">Iniciar Sesion</a>
-                </div>
-            @endif
-
-
-
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/juegos">Juegos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#categorias-juegos">Categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-us">Sobre nosotros</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="">
+                <a class="btn btn-estud btn-primary mx-4 mb-0" href="/ruta-estudiante" type="submit">Estudiante</a>
+                <a class="btn btn-maestro btn-secondary mb-0" href="/dashboard" type="submit">Maestro</a>
+            </div>
+        </div>
     </nav>
     {{-- contenedor con imagen de niños de fondo --}}
 
@@ -398,13 +400,15 @@
                                 </div>
                                 {{-- <img src="/images/home/juegos-matematicas.jpg" class="card-img-top"
                                     alt="Imagen de Matemáticas"> --}}
-                        <div class="card-body">
-                            <h5 class="card-title">Matemáticas</h5>
-                            <p class="card-text">Sumas, restas y más. ¡Aprende jugando con nuestros juegos!</p>
-                            <a href="/sumar" class="btn btn-primary btn-mat">Entrar</a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Matemáticas</h5>
+                                    <p class="card-text">Demuestra tus Habilidades al Sumar.</p>
+                                    <a href="/sumar" class="btn btn-primary btn-mat">Jugar</a>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="col">
+                            <div class="col">
                             <div class="card mt-4">
                                 <div class="card-img-top cont-img-lit">
                                 </div>
@@ -457,6 +461,4 @@
                 </div>
 
             </div>
-
-
 
