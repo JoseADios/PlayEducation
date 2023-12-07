@@ -225,7 +225,7 @@
             height: 100%;
         }
 
-        .cont-img-interactiva {
+        .cont-img-interactiva{
             background-image: url('/images/home/educacion-interactiva.jpg');
 
         }
@@ -267,30 +267,27 @@
             border-radius: 2rem;
             overflow: hidden;
         }
-
         .cont-about-2 {
             border: #fb6f1aa3 solid 2px;
             border-radius: 2rem;
             overflow: hidden;
         }
-
         .cont-about-3 {
             border: #ac26c3ab solid 2px;
             border-radius: 2rem;
             overflow: hidden;
         }
 
-        footer {
-            background-color: #e4e8f3;
-            ;
+        footer{
+            background-color: #e4e8f3;;
             border-top: 1px solid #e3e6ef;
         }
 
-        .list-unstyled>li>a {
+        .list-unstyled > li > a{
             color: var(--color-azul);
         }
 
-        .cont-img-breve-desc {
+        .cont-img-breve-desc{
             background-image: url('/images/home/niña-con-movil.avif');
             background-size: cover;
             background-position: center;
@@ -298,23 +295,23 @@
             height: 100%;
         }
 
-        .cont-img-mat {
-            background-image: url('/images/home/juegos-matematicas.jpg');
+        .cont-img-mat{
+            background-image: url('/images/home/sumar.png');
             background-size: cover;
             background-position: center;
             width: 100%;
             height: 10rem;
         }
 
-        .cont-img-lit {
-            background-image: url('/images/home/juegos-literatura.jpg');
+        .cont-img-lit{
+            background-image: url('/images/home/animales.png');
             background-size: cover;
             background-position: center;
             width: 100%;
             height: 10rem;
         }
 
-        .cont-img-soc {
+        .cont-img-soc{
             background-image: url('/images/home/juegos-sociales.jpg');
             background-size: cover;
             background-position: center;
@@ -322,7 +319,7 @@
             height: 10rem;
         }
 
-        .cont-img-nat {
+        .cont-img-nat{
             background-image: url('/images/home/juegos-naturales.jpg');
             background-size: cover;
             background-position: center;
@@ -330,21 +327,22 @@
             height: 10rem;
         }
 
-        .cont-img-log {
-            background-image: url('/images/home/juegos-logica.jpg');
+        .cont-img-log{
+            background-image: url('/images/home/tictac.png');
             background-size: cover;
             background-position: center;
             width: 100%;
             height: 10rem;
         }
 
-        .cont-variedad-juegos {
+        .cont-variedad-juegos{
             background-image: url('/images/home/variedad-juegos.jpeg');
         }
 
-        .cont-seguimiento {
+        .cont-seguimiento{
             background-image: url('/images/home/graficos.jpg');
         }
+
     </style>
 </head>
 
@@ -352,91 +350,114 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid my-2">
             <a class="navbar-brand d-flex align-items-center" href="/">
-                <img src="../assets/img/logo-ct.png" alt="Bootstrap" width="30" height="24">
+                <img src="../assets/img/logo-ct.png" alt="Bootstrap" width="70" height="70">
                 <h4 class="ps-3 play-edu mb-0">Play Education</h4>
             </a>
-
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/juegos">Juegos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#categorias-juegos">Categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-us">Sobre nosotros</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="">
+                <a class="btn btn-estud btn-primary mx-4 mb-0" href="/ruta-estudiante" type="submit">Estudiante</a>
+                <a class="btn btn-maestro btn-secondary mb-0" href="/dashboard" type="submit">Maestro</a>
+            </div>
+        </div>
     </nav>
     {{-- contenedor con imagen de niños de fondo --}}
 
-    <div class="cont-img2 col d-flex justify-content-end position-relative">
-        <div class="cont-img-breve-desc"></div>
-        <div class="cover-img-2 position-absolute w-100 h-100"></div>
-    </div>
-    </div>
+                <div class="cont-img2 col d-flex justify-content-end position-relative">
+                    <div class="cont-img-breve-desc"></div>
+                    <div class="cover-img-2 position-absolute w-100 h-100"></div>
+                </div>
+            </div>
 
-    {{-- Categorias de juegos --}}
-    <div class="col mt-6 p-2">
-        <div class="px-4 pb-4 enc-3">
-            <h1 class="text-center title-3" id="categorias-juegos">Categorías</h1>
-        </div>
-        <div class="container w-100 text-center">
-            <div class="row row-cols-5 justify-content-center d-flex align-items-stretch">
+            {{-- Categorias de juegos --}}
+            <div class="col mt-6 p-2">
+                <div class="px-4 pb-4 enc-3">
+                    <h1 class="text-center title-3" id="categorias-juegos" >Todos Juegos</h1>
+                </div>
+                <div class="container w-100 text-center">
+                    <div class="row row-cols-5 justify-content-center d-flex align-items-stretch">
 
-                <div class="col">
-                    <div class="card mt-4">
-                        <div class="card-img-top cont-img-mat">
-                        </div>
-                        {{-- <img src="/images/home/juegos-matematicas.jpg" class="card-img-top"
+                        <div class="col">
+                            <div class="card mt-4">
+                                <div class="card-img-top cont-img-mat">
+                                </div>
+                                {{-- <img src="/images/home/juegos-matematicas.jpg" class="card-img-top"
                                     alt="Imagen de Matemáticas"> --}}
-                        <div class="card-body">
-                            <h5 class="card-title">Matemáticas</h5>
-                            <p class="card-text">Sumas, restas y más. ¡Aprende jugando con nuestros juegos!</p>
-                            <a href="/a-sumar" class="btn btn-primary btn-mat">Entrar</a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Matemáticas</h5>
+                                    <p class="card-text">Demuestra tus Habilidades al Sumar.</p>
+                                    <a href="/sumar" class="btn btn-primary btn-mat">Jugar</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="col">
-                    <div class="card mt-4">
-                        <div class="card-img-top cont-img-lit">
+                        <div class="col">
+                            <div class="card mt-4">
+                                <div class="card-img-top cont-img-lit">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Literatura</h5>
+                                    <p class="card-text">¿Podras Adivinar Que Animal Es?.</p>
+                                    <a href="animales" class="btn btn-primary btn-lit">Jugar</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Literatura</h5>
-                            <p class="card-text">Domina vocabulario y gramática con nuestros divertidos juegos.</p>
-                            <a href="animales" class="btn btn-primary btn-lit">Entrar</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col">
-                    <div class="card mt-4">
-                        <div class="card-img-top cont-img-soc">
+                        {{-- <div class="col">
+                            <div class="card mt-4">
+                                <div class="card-img-top cont-img-soc">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Ciencias Sociales</h5>
+                                    <p class="card-text">Explora geografía e historia con juegos fascinantes.</p>
+                                    <a href="#" class="btn btn-primary btn-soc">Entrar</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Ciencias Sociales</h5>
-                            <p class="card-text">Explora geografía e historia con juegos fascinantes.</p>
-                            <a href="#" class="btn btn-primary btn-soc">Entrar</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col">
-                    <div class="card mt-4">
-                        <div class="card-img-top cont-img-nat">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Ciencias Naturales</h5>
-                            <p class="card-text">Descubre biología, ecología y más en nuestros juegos.</p>
-                            <a href="#" class="btn btn-primary btn-nat">Entrar</a>
-                        </div>
-                    </div>
-                </div>
+                        <div class="col">
+                            <div class="card mt-4">
+                                <div class="card-img-top cont-img-nat">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Ciencias Naturales</h5>
+                                    <p class="card-text">Descubre biología, ecología y más en nuestros juegos.</p>
+                                    <a href="#" class="btn btn-primary btn-nat">Entrar</a>
+                                </div>
+                            </div>
+                        </div> --}}
 
-                <div class="col">
-                    <div class="card mt-4">
-                        <div class="card-img-top cont-img-log">
+                        <div class="col">
+                            <div class="card mt-4">
+                                <div class="card-img-top cont-img-log">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Lógica</h5>
+                                    <p class="card-text">Le Ganaras este "Dificil" 3 en Raya.
+                                    </p>
+                                    <a href="/TicTac" class="btn btn-primary btn-log">Jugar</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Lógica</h5>
-                            <p class="card-text">Desarrolla habilidades lógicas con acertijos y rompecabezas.
-                            </p>
-                            <a href="#" class="btn btn-primary btn-log">Entrar</a>
-                        </div>
+
                     </div>
                 </div>
 
             </div>
-        </div>
 
-    </div>
+
+
