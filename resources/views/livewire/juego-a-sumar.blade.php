@@ -9,6 +9,11 @@
     </div>
 
     <h1>A SUMAR</h1>
+    {{-- @if ($prueba)
+        <div class="alert alert-success" role="alert">
+            {{ $prueba }}
+        </div>
+    @endif --}}
     <div class="contador-container">
         <div id="puntos" class="contador">
             <span class="contador-icon">🌟</span>
@@ -26,7 +31,7 @@
                 <span class="resultado" id="resultado"> 18</span>
             </div>
             <span class="msj" id="msj"></span>
-            <div  class="btn-jugar-de-nuevo" id="jugarDeNuevo">Jugar de nuevo</div>
+            <div class="btn-jugar-de-nuevo" id="jugarDeNuevo">Jugar de nuevo</div>
         </div>
         <div class="derecha">
             <span id="op1" class="opcion" onclick="controlarRespuesta(this)">18</span>
@@ -95,6 +100,11 @@
             txt_puntos.innerHTML = "Puntos: " + puntos + " 🌟";
             txt_msj.innerHTML = "EXCELENTE!!";
             txt_msj.style.color = "green";
+
+            $wire.dispatch('puntuacionObtenida', {
+                puntaje: puntos,
+            });
+
             setTimeout(comenzar, 2000);
         } else {
             if (intentosRestantes > 0) {
@@ -164,6 +174,9 @@
         botonJugarDeNuevo.style.display = 'inline-flex';
 
         // funcion de livewire
+        $wire.dispatch('puntuacionObtenida', {
+            puntaje: puntos
+        });
 
     }
 
