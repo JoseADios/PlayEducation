@@ -298,16 +298,16 @@
             height: 100%;
         }
 
-        .cont-img-mat {
-            background-image: url('/images/home/juegos-matematicas.jpg');
+        .cont-img-a-sumar {
+            background-image: url('/images/games/sumar.png');
             background-size: cover;
             background-position: center;
             width: 100%;
             height: 10rem;
         }
 
-        .cont-img-lit {
-            background-image: url('/images/home/juegos-literatura.jpg');
+        .cont-img-adivina-animal {
+            background-image: url('/images/games/animales.png');
             background-size: cover;
             background-position: center;
             width: 100%;
@@ -315,7 +315,7 @@
         }
 
         .cont-img-soc {
-            background-image: url('/images/home/juegos-sociales.jpg');
+            background-image: url('/images/games/tictac.png');
             background-size: cover;
             background-position: center;
             width: 100%;
@@ -323,15 +323,16 @@
         }
 
         .cont-img-nat {
-            background-image: url('/images/home/juegos-naturales.jpg');
+            background-image: url('/images/games/tictac.png');
             background-size: cover;
             background-position: center;
             width: 100%;
             height: 10rem;
         }
 
-        .cont-img-log {
-            background-image: url('/images/home/juegos-logica.jpg');
+        .cont-img-tictac {
+            background-image: url('/images/games/tictac.png');
+
             background-size: cover;
             background-position: center;
             width: 100%;
@@ -395,7 +396,7 @@
 
                 <div class="col">
                     <div class="card mt-4">
-                        <div class="card-img-top cont-img-mat">
+                        <div class="card-img-top cont-img-a-sumar">
                         </div>
                         {{-- <img src="/images/home/juegos-matematicas.jpg" class="card-img-top"
                         alt="Imagen de Matemáticas"> --}}
@@ -409,7 +410,7 @@
 
                 <div class="col">
                     <div class="card mt-4">
-                        <div class="card-img-top cont-img-lit">
+                        <div class="card-img-top cont-img-adivina-animal">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Adivina el animal</h5>
@@ -445,7 +446,7 @@
 
                 <div class="col">
                     <div class="card mt-4">
-                        <div class="card-img-top cont-img-log">
+                        <div class="card-img-top cont-img-tictac">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">3 en raya</h5>
