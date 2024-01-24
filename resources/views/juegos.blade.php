@@ -398,8 +398,6 @@
                     <div class="card mt-4">
                         <div class="card-img-top cont-img-a-sumar">
                         </div>
-                        {{-- <img src="/images/home/juegos-matematicas.jpg" class="card-img-top"
-                        alt="Imagen de Matemáticas"> --}}
                         <div class="card-body">
                             <h5 class="card-title">A Sumar!</h5>
                             <p class="card-text">Demuestra tus Habilidades al Sumar.</p>
@@ -419,31 +417,6 @@
                         </div>
                     </div>
                 </div>
-
-                {{-- <div class="col">
-                <div class="card mt-4">
-                    <div class="card-img-top cont-img-soc">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Ciencias Sociales</h5>
-                        <p class="card-text">Explora geografía e historia con juegos fascinantes.</p>
-                        <a href="#" class="btn btn-primary btn-soc">Entrar</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card mt-4">
-                    <div class="card-img-top cont-img-nat">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Ciencias Naturales</h5>
-                        <p class="card-text">Descubre biología, ecología y más en nuestros juegos.</p>
-                        <a href="#" class="btn btn-primary btn-nat">Entrar</a>
-                    </div>
-                </div>
-            </div> --}}
-
                 <div class="col">
                     <div class="card mt-4">
                         <div class="card-img-top cont-img-tictac">

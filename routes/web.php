@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Estudiantes;
+use App\Http\Livewire\Eventos;
 use App\Http\Livewire\Grupos;
 use App\Http\Livewire\JuegoASumar;
 use Illuminate\Support\Facades\File;
@@ -36,19 +37,29 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('/evento', Eventos::class)->name('evento');
+
+
+Route::get('/', function () {
+    return view('index');
+})->name('/');
+
+
+// ----------------
+//     JUEGOS
+// ----------------
+
+Route::get('/juegos', function () {
+    return view('juegos');
+})->name('juegos');
+
+
 Route::get('/a-sumar', function () {
     return view('livewire.juego-a-sumar');
 })->name('a-sumar');
 
 // Route::get('/a-sumar', JuegoASumar::class)->name('a-sumar');
 
-Route::get('/', function () {
-    return view('index');
-})->name('/');
-
-Route::get('/juegos', function () {
-    return view('juegos');
-})->name('juegos');
 
 Route::get('/sumar/{any}', function ($any) {
     $path = public_path('sumar/' . $any);
@@ -56,9 +67,9 @@ Route::get('/sumar/{any}', function ($any) {
     if (File::exists($path)) {
         return File::get($path);
     }
-
     abort(404);
 })->where('any', '.*');
+
 
 Route::get('/animales/{any}', function ($any) {
     $path = public_path('animales/' . $any);
@@ -66,9 +77,9 @@ Route::get('/animales/{any}', function ($any) {
     if (File::exists($path)) {
         return File::get($path);
     }
-
     abort(404);
 })->where('any', '.*');
+
 
 Route::get('/TicTac/{any}', function ($any) {
     $path = public_path('TicTac/' . $any);
@@ -76,7 +87,6 @@ Route::get('/TicTac/{any}', function ($any) {
     if (File::exists($path)) {
         return File::get($path);
     }
-
     abort(404);
 })->where('any', '.*');
 
@@ -84,13 +94,24 @@ Route::get('/TicTac/{any}', function ($any) {
 
 //Route::get('/app/sumar/index.html')->name('suma');
 
+// ----------------
+//   CREDENCIALES
+// ----------------
+
 Route::get('/sign-up', SignUp::class)->name('sign-up');
+
 Route::get('/login', Login::class)->name('login');
+
+Route::get('/livewire/message/auth.login', Login::class)->name('login-message');
 
 Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-password');
 
 Route::get('/reset-password/{id}', ResetPassword::class)->name('reset-password')->middleware('signed');
 
+
+// ----------------
+//   MAESTROS
+// ----------------
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
@@ -107,7 +128,10 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// estudiantes
+// ----------------
+//   ESTUDIANTES
+// ----------------
+
 Route::middleware(['web'])->group(function () {
 
     Route::get('/ruta-estudiante', function () {
@@ -116,6 +140,5 @@ Route::middleware(['web'])->group(function () {
 
     Route::get('login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'showLoginForm'])->middleware('auth.estudiante')->name('login-estudiante');
     Route::post('login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'login']);
-
     Route::post('/logout-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'logout'])->name('logout-estudiante');
 });

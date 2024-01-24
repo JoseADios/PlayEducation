@@ -10,7 +10,7 @@ class RedirectIfAuthenticatedEstudiante
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard('estudiante')->check()) {
-            return redirect('ruta-estudiante');
+            return redirect('juegos');
         }
 
         return $next($request);
