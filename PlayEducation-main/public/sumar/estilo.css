@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+
+body {
+    text-align: center;
+    color: #262626;
+    background: url(img/fondo.jpg);
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito';
+}
+
+h1 {
+    color: white;
+    padding: 30px;
+}
+
+.contador-container {
+    display: flex;
+    justify-content: center; /* Modificado de space-between a center */
+    align-items: center; /* Añadido para centrar verticalmente */
+    padding: 10px;
+}
+
+.contador {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 35px;
+	margin-right: 70px;
+	margin-left: 70px;
+}
+
+.contador-icon {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.contador-text {
+    font-size: 20px;
+}
+
+.container {
+    background-color: #FFC562;
+    max-width: 700px;
+    margin: auto;
+    border: 2px solid #000;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+
+.izquierdo {
+    font-size: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-operacion {
+    margin-bottom: 20px;
+}
+
+.resultado {
+    font-size: 36px;
+}
+
+.msj {
+    font-size: 28px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.derecha {
+    display: flex;
+    flex-direction: row; /* Cambiado de column a row */
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.opcion {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #000;
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #000;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.opcion:hover {
+    background-color: #262626;
+}
+
+.btn-primary {
+    background-color: #000;
+    color: white;
+    border: 1px solid #000;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: #262626;
+}
+
+.btn-volver{
+    padding: .3rem 1rem;
+    display: flex;
+    justify-content: start;
+
+}
+
+.btn-jugar-de-nuevo{
+    display: none;
+    width: 10rem;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #122135;
+    border-radius: 0.5rem;
+    color: white;
+    font-size: large;
+}

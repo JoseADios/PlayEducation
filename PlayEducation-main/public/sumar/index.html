@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de suma</title>
+    <link rel="stylesheet" href="/sumar/estilo.css">
+   <!-- <link rel="stylesheet" href="estilo.css"> -->
+</head>
+<body>
+    <h1>A SUMAR</h1>
+    <div class="contador-container">
+        <div id="puntos" class="contador">
+            <span class="contador-icon">🌟</span>
+            <span class="contador-text">Puntos: 0</span>
+        </div>
+        <div id="intentos" class="contador">
+            <span class="contador-icon">🚀</span>
+            <span class="contador-text">Intentos restantes: 3</span>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="izquierdo">
+            <div class="container-operacion">
+                <span id="suma">9 + 9 =</span>
+                <span class="resultado" id="resultado"> 18</span>
+            </div>
+            <span class="msj" id="msj"></span>
+        </div>
+        <div class="derecha">
+            <button id="op1" class="opcion" onclick="controlarRespuesta(this)">18</button>
+            <button id="op2" class="opcion" onclick="controlarRespuesta(this)">17</button>
+            <button id="op3" class="opcion" onclick="controlarRespuesta(this)">8</button>
+        </div>
+    </div>
+    <script src="/sumar/script.js"></script>
+</body>
+</html>
