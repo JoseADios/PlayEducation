@@ -21,6 +21,7 @@ use App\Http\Livewire\Rtl;
 
 use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\LaravelExamples\UserManagement;
+use App\Http\Livewire\PruebaComp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -96,12 +97,15 @@ Route::middleware('auth')->group(function () {
 // estudiantes
 Route::middleware(['web'])->group(function () {
 
-    Route::get('/student', function () {
-        return view('juegos');
-    })->middleware('auth:estudiante')->name('student');
-
     Route::get('login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'showLoginForm'])->middleware('auth.estudiante')->name('login-estudiante');
     Route::post('login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'login']);
-
     Route::post('/logout-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'logout'])->name('logout-estudiante');
+});
+
+Route::prefix('student')->group(function () {
+
+    Route::get('/', function () {
+        return view('juegos');
+    })->middleware('auth:estudiante')->name('student');
+    Route::get('/prueba', PruebaComp::class)->name('prueba');
 });
