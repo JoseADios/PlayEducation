@@ -21,7 +21,6 @@ use App\Http\Livewire\Rtl;
 
 use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\LaravelExamples\UserManagement;
-use App\Http\Livewire\Students\PruebaComponent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,14 +35,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/prueba', PruebaComponent::class)->name('prueba');
-
-Route::get('/a-sumar', function () {
-    return view('livewire.juego-a-sumar');
-})->name('a-sumar');
-
-// Route::get('/a-sumar', JuegoASumar::class)->name('a-sumar');
-
 Route::get('/', function () {
     return view('index');
 })->name('/');
@@ -52,35 +43,28 @@ Route::get('/juegos', function () {
     return view('juegos');
 })->name('juegos');
 
-Route::get('/sumar/{any}', function ($any) {
-    $path = public_path('sumar/' . $any);
+Route::get('/a-sumar', JuegoASumar::class)->name('a-sumar');
 
-    if (File::exists($path)) {
-        return File::get($path);
+Route::get('/sumar', function () {
+    if (File::exists()) {
+        return File::get();
     }
-
     abort(404);
-})->where('any', '.*');
+});
 
-Route::get('/animales/{any}', function ($any) {
-    $path = public_path('animales/' . $any);
-
-    if (File::exists($path)) {
-        return File::get($path);
+Route::get('/animales', function () {
+    if (File::exists()) {
+        return File::get();
     }
-
     abort(404);
-})->where('any', '.*');
+});
 
-Route::get('/TicTac/{any}', function ($any) {
-    $path = public_path('TicTac/' . $any);
-
-    if (File::exists($path)) {
-        return File::get($path);
+Route::get('/TicTac', function () {
+    if (File::exists()) {
+        return File::get();
     }
-
     abort(404);
-})->where('any', '.*');
+});
 
 
 
@@ -112,9 +96,9 @@ Route::middleware('auth')->group(function () {
 // estudiantes
 Route::middleware(['web'])->group(function () {
 
-    Route::get('/ruta-estudiante', function () {
+    Route::get('/student', function () {
         return view('juegos');
-    })->middleware('auth:estudiante')->name('ruta-estudiante');
+    })->middleware('auth:estudiante')->name('student');
 
     Route::get('login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'showLoginForm'])->middleware('auth.estudiante')->name('login-estudiante');
     Route::post('login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'login']);
