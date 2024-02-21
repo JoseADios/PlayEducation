@@ -21,7 +21,7 @@ use App\Http\Livewire\Rtl;
 
 use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\LaravelExamples\UserManagement;
-
+use App\Http\Livewire\Students\PruebaComponent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,6 +35,8 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/prueba', PruebaComponent::class)->name('prueba');
 
 Route::get('/a-sumar', function () {
     return view('livewire.juego-a-sumar');
