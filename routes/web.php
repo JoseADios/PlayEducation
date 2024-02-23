@@ -22,7 +22,7 @@ use App\Http\Livewire\Rtl;
 
 use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\LaravelExamples\UserManagement;
-
+use App\Http\Livewire\PruebaComp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,58 +37,36 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/evento', Eventos::class)->name('evento');
-
-
 Route::get('/', function () {
     return view('index');
 })->name('/');
-
-
-// ----------------
-//     JUEGOS
-// ----------------
 
 Route::get('/juegos', function () {
     return view('juegos');
 })->name('juegos');
 
+Route::get('/a-sumar', JuegoASumar::class)->name('a-sumar');
 
-Route::get('/a-sumar', function () {
-    return view('livewire.juego-a-sumar');
-})->name('a-sumar');
-
-// Route::get('/a-sumar', JuegoASumar::class)->name('a-sumar');
-
-
-Route::get('/sumar/{any}', function ($any) {
-    $path = public_path('sumar/' . $any);
-
-    if (File::exists($path)) {
-        return File::get($path);
+Route::get('/sumar', function () {
+    if (File::exists()) {
+        return File::get();
     }
     abort(404);
-})->where('any', '.*');
+});
 
-
-Route::get('/animales/{any}', function ($any) {
-    $path = public_path('animales/' . $any);
-
-    if (File::exists($path)) {
-        return File::get($path);
+Route::get('/animales', function () {
+    if (File::exists()) {
+        return File::get();
     }
     abort(404);
-})->where('any', '.*');
+});
 
-
-Route::get('/TicTac/{any}', function ($any) {
-    $path = public_path('TicTac/' . $any);
-
-    if (File::exists($path)) {
-        return File::get($path);
+Route::get('/TicTac', function () {
+    if (File::exists()) {
+        return File::get();
     }
     abort(404);
-})->where('any', '.*');
+});
 
 
 
@@ -134,11 +112,15 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['web'])->group(function () {
 
-    Route::get('/ruta-estudiante', function () {
-        return view('juegos');
-    })->middleware('auth:estudiante')->name('ruta-estudiante');
-
     Route::get('login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'showLoginForm'])->middleware('auth.estudiante')->name('login-estudiante');
     Route::post('login-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'login']);
     Route::post('/logout-estudiante', [\App\Http\Controllers\EstudianteAuthController::class, 'logout'])->name('logout-estudiante');
+});
+
+Route::prefix('student')->group(function () {
+
+    Route::get('/', function () {
+        return view('juegos');
+    })->middleware('auth:estudiante')->name('student');
+    Route::get('/prueba', PruebaComp::class)->name('prueba');
 });

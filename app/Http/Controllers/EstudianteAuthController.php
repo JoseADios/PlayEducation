@@ -20,7 +20,7 @@ class EstudianteAuthController extends Controller
     public function showLoginForm()
     {
         if (Auth::guard('estudiante')->check()) {
-            return redirect('ruta-estudiante');
+            return redirect('student');
         }
 
         return view('livewire.login-estudiantes');
@@ -33,7 +33,7 @@ class EstudianteAuthController extends Controller
 
         try {
             if ($guard->attempt($credentials)) {
-                return redirect()->intended('ruta-estudiante');
+                return redirect()->intended('student');
             }
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
