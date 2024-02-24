@@ -4,15 +4,19 @@
 
     <p>Mirame</p>
 
-    <input onclick="getData()" type="button" value="Jalar data">
-    <input id="inpt" type="text" value="hola">
-    <div class="cont"></div>
+    <input onclick="passData()" type="button" value="Jalar data">
+    <input id="inpt" type="text" value="{{ $prueba }}">
+    <textarea name="" id="text-a" cols="30" rows="10">{{ $prueba }}</textarea>
+
+    <script>
+        function passData() {
+            let el = document.getElementById('inpt').value
+
+            @this.prueba = el
+
+            let pp = @this.prueba
+
+            console.log(el);
+        }
+    </script>
 </div>
-
-<script>
-    function getData() {
-        let el = document.getElementById('inpt').value;
-
-        console.log(el);
-    }
-</script>

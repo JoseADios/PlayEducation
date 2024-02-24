@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class PruebaComp extends Component
 {
-    public $prueba = 'pruebaaaaa';
+    public $prueba;
 
     public function render()
     {
