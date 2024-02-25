@@ -11,17 +11,13 @@ class JuegoASumar extends Component
 {
     public $estudianteA, $juego, $prueba;
 
-    protected $listeners = ['puntuacionObtenida' => 'guardarPuntuacion'];
-
 
     public function mount()
     {
-        $this->prueba = false;
         $this->juego = Juego::where('nombre', 'A Sumar')->first();
         $this->estudianteA = Auth::guard('estudiante')->user();
     }
 
-    #[On('puntuacionObtenida')]
     public function guardarPuntaje($puntaje)
     {
         $this->prueba = true;
