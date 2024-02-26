@@ -1,9 +1,6 @@
 <x-layouts.base>
     {{-- If the user is authenticated --}}
     @auth
-        <script>
-            console.log('{{ request()->segment(count(request()->segments()) - 1) }}');
-        </script>
         @if (str_contains(request()->segment(count(request()->segments()) - 1), 'student') )
             {{ $slot }}
             {{-- If the user is authenticated on the static sign up or the sign up page --}}

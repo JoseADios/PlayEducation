@@ -6,9 +6,6 @@ use App\Models\Juego;
 use App\Models\Puntuacion;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-
-use function Psy\debug;
 
 class JuegoASumar extends Component
 {

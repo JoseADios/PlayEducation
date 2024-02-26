@@ -192,6 +192,8 @@
             window.callGuardarPuntos = function() {
                 @this.guardarPuntaje(puntos)
 
+                console.log();
+
                 // Reinicia el juego al hacer clic en el botón
                 txt_msj.innerHTML = "";
                 botonJugarDeNuevo.style.display = 'none';
