@@ -3,14 +3,16 @@
 namespace App\Http\Livewire;
 
 use App\Models\Juego;
+use App\Models\Puntuacion;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\On;
+use Illuminate\Support\Facades\Log;
+
+use function Psy\debug;
 
 class JuegoASumar extends Component
 {
-    public $estudianteA, $juego, $prueba;
-
+    public $estudianteA, $juego;
 
     public function mount()
     {
@@ -18,14 +20,18 @@ class JuegoASumar extends Component
         $this->estudianteA = Auth::guard('estudiante')->user();
     }
 
-    public function guardarPuntaje($puntaje)
+
+    public function guardarPuntaje($puntos)
     {
-        $this->prueba = true;
-        // guardar puntuacion
-        $this->estudianteA->puntuacions()->create([
-            'juego_id' => $this->juego->id,
-            'puntos' => $puntaje,
-        ]);
+
+        if ($this->estudianteA and $puntos) {
+
+            // guardar puntuacion
+            $this->estudianteA->puntuaciones()->create([
+                'juego_id' => $this->juego->id,
+                'puntos' => $puntos,
+            ]);
+        }
     }
 
     public function render()

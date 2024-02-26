@@ -1,14 +1,11 @@
-
-
 var num1, num2, respuesta;
-txt_suma = document.getElementById("suma");
-op1 = document.getElementById("op1");
-op2 = document.getElementById("op2");
-op3 = document.getElementById("op3");
-txt_msj = document.getElementById("msj");
-txt_resultado = document.getElementById("resultado");
-txt_puntos = document.getElementById("puntos"); // Nuevo
-botonJugarDeNuevo = document.getElementById("jugarDeNuevo");
+let txt_suma = document.getElementById("suma");
+let op1 = document.getElementById("op1");
+let op2 = document.getElementById("op2");
+let op3 = document.getElementById("op3");
+let txt_msj = document.getElementById("msj");
+let txt_resultado = document.getElementById("resultado");
+let botonJugarDeNuevo = document.getElementById("jugarDeNuevo");
 
 var puntos = 0;
 var txt_puntos = document.getElementById("puntos");
@@ -53,6 +50,7 @@ function comenzar() {
 function controlarRespuesta(opcionElegida) {
     txt_resultado.innerHTML = opcionElegida.innerHTML;
     if (respuesta == opcionElegida.innerHTML) {
+        disableButtons()
         puntos += 1;
         txt_puntos.innerHTML = "Puntos: " + puntos + " 🌟";
         txt_msj.innerHTML = "EXCELENTE!!";
@@ -62,24 +60,54 @@ function controlarRespuesta(opcionElegida) {
         //     puntaje: puntos,
         // });
 
-        setTimeout(comenzar, 2000);
+        setTimeout(() => {
+            comenzar()
+            enableButtons()
+        }, 1000);
+
     } else {
         if (intentosRestantes > 0) {
             intentosRestantes -= 1;
         }
+        disableButtons()
         txt_intentos.innerHTML = "Intentos restantes: " + intentosRestantes + " 🚀";
         txt_msj.innerHTML = "INTENTA DE NUEVO!!";
         txt_msj.style.color = "red";
+
 
         if (intentosRestantes === 0) {
             // Game Over
             txt_msj.innerHTML = "GAME OVER";
             txt_msj.style.color = "red";
-            setTimeout(resetJuego, 2000);
+
+            setTimeout(() => {
+                resetJuego()
+                enableButtons()
+            }, 1000);
+
         } else {
-            setTimeout(limpiar, 2000);
+            setTimeout(() => {
+                limpiar()
+                enableButtons()
+            }, 1000);
         }
     }
+}
+
+function disableButtons() {
+    op1.disabled = true;
+    op2.disabled = true;
+    op3.disabled = true;
+
+    op1.style.backgroundColor = op2.style.backgroundColor = op3.style.backgroundColor = 'gray';
+}
+
+function enableButtons() {
+    op1.disabled = false;
+    op2.disabled = false;
+    op3.disabled = false;
+
+    op1.style.backgroundColor = op2.style.backgroundColor = op3.style.backgroundColor = 'black';
 }
 
 function resetJuego() {
@@ -89,9 +117,7 @@ function resetJuego() {
     op3.style.display = 'none';
 
     if (intentosRestantes === 0) {
-        intentosRestantes = 3;
         txt_intentos.innerHTML = "Intentos restantes: " + intentosRestantes + " 🚀";
-        // puntos = 0;
         txt_puntos.innerHTML = "Puntos: " + puntos + " 🌟";
         mostrarGameOver();
     } else {
@@ -108,34 +134,35 @@ function mostrarGameOver() {
     // Muestra la puntuación y el botón para jugar de nuevo
     txt_puntos.innerHTML = "Puntuación final: " + puntos + " 🌟";
 
-    botonJugarDeNuevo.addEventListener("click", function () {
-        // Reinicia el juego al hacer clic en el botón
-        txt_msj.innerHTML = "";
-        botonJugarDeNuevo.style.display = 'none';
 
-        txt_puntos.innerHTML = "Puntos: " + puntos + " 🌟";
-        intentosRestantes = 3;
-        txt_intentos.innerHTML = "Intentos restantes: " + intentosRestantes + " 🚀";
-        puntos = 0;
-        comenzar();
-
-        op1.style.display = 'inline-flex'; // o 'block' según el estilo que necesites
-        op2.style.display = 'inline-flex';
-        op3.style.display = 'inline-flex';
-    });
-
-    console.log('Evento envioPuntuacion emitido con valor:', puntos);
     botonJugarDeNuevo.setAttribute('data-puntos', puntos);
 
     // Agrega el botón al contenedor
     botonJugarDeNuevo.style.display = 'inline-flex';
 
-    // funcion de livewire
-    // $wire.dispatch('puntuacionObtenida', {
-    //     puntaje: puntos
-    // });
+    // CREAR EL EVENTO PARA MANDAR LA PUNTUACION FINAL
+
+    Livewire.emit('partidaTerminada', puntos);
 
 }
+
+botonJugarDeNuevo.addEventListener("click", function () {
+    // Reinicia el juego al hacer clic en el botón
+    txt_msj.innerHTML = "";
+    botonJugarDeNuevo.style.display = 'none';
+
+    txt_puntos.innerHTML = "Puntos: " + puntos + " 🌟";
+    intentosRestantes = 3;
+    txt_intentos.innerHTML = "Intentos restantes: " + intentosRestantes + " 🚀";
+    puntos = 0;
+    intentosRestantes = 3;
+
+    comenzar();
+
+    op1.style.display = 'inline-flex'; // o 'block' según el estilo que necesites
+    op2.style.display = 'inline-flex';
+    op3.style.display = 'inline-flex';
+});
 
 function limpiar() {
     txt_resultado.innerHTML = "?";

@@ -17,8 +17,10 @@ h1 {
 
 .contador-container {
     display: flex;
-    justify-content: center; /* Modificado de space-between a center */
-    align-items: center; /* Añadido para centrar verticalmente */
+    justify-content: center;
+    /* Modificado de space-between a center */
+    align-items: center;
+    /* Añadido para centrar verticalmente */
     padding: 10px;
 }
 
@@ -27,8 +29,8 @@ h1 {
     align-items: center;
     color: white;
     font-size: 35px;
-	margin-right: 70px;
-	margin-left: 70px;
+    margin-right: 70px;
+    margin-left: 70px;
 }
 
 .contador-icon {
@@ -76,7 +78,8 @@ h1 {
 
 .derecha {
     display: flex;
-    flex-direction: row; /* Cambiado de column a row */
+    flex-direction: row;
+    /* Cambiado de column a row */
     justify-content: space-around;
     margin-top: 20px;
 }
@@ -115,14 +118,14 @@ h1 {
     background-color: #262626;
 }
 
-.btn-volver{
+.btn-volver {
     padding: .3rem 1rem;
     display: flex;
     justify-content: start;
 
 }
 
-.btn-jugar-de-nuevo{
+.btn-jugar-de-nuevo {
     display: none;
     width: 10rem;
     height: 3rem;

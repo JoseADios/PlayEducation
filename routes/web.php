@@ -45,8 +45,6 @@ Route::get('/juegos', function () {
     return view('juegos');
 })->name('juegos');
 
-Route::get('/a-sumar', JuegoASumar::class)->name('a-sumar');
-
 Route::get('/sumar', function () {
     if (File::exists()) {
         return File::get();
@@ -122,5 +120,7 @@ Route::prefix('student')->group(function () {
     Route::get('/', function () {
         return view('juegos');
     })->middleware('auth:estudiante')->name('student');
+
+    Route::get('/a-sumar', JuegoASumar::class)->name('a-sumar');
     Route::get('/prueba', PruebaComp::class)->name('prueba');
 });

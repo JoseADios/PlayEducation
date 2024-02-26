@@ -9,6 +9,8 @@ class Puntuacion extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['juego_id', 'puntos', 'estudiante_id'];
+
     public function juego()
     {
         return $this->belongsTo(Juego::class);
@@ -18,5 +20,4 @@ class Puntuacion extends Model
     {
         return $this->belongsTo(Estudiante::class);
     }
-
 }
